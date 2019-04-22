@@ -21,10 +21,13 @@
           </ul>
         </nav>
 
-          <h1 class="logo"> (LOGO Y NOMBRE)</h1>
+        <div class="logo">
+          <h1>DIGITAL STORE</h1>
+          <h2>Un deseo. Un click. Nunca antes fue tan fácil.</h2>
+        </div>
 
         <div class="banner">
-          <h1>DESCRIPCIÓN BREVE DE LA WEB/EMPRESA</h1>
+
           <nav class="sociales">
             <a href="#"><img src="images/facebook.png" alt="icono facebook"></a>
             <a href="#"><img src="images/instagram.png" alt="icono instagram"></a>
