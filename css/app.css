@@ -4,6 +4,9 @@
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 /* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css?family=Share+Tech');
+/* BOOTSTRAP */
+@import "bootstrap-grid.min.css";
+@import "bootstrap.min.css";
 
 /* ESTILOS GLOBALES */
 * {
@@ -26,9 +29,6 @@ ul, ol {
 }
 
 body {
-  background: #00B4DB;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Share Tech', sans-serif;
 }
 
@@ -38,17 +38,18 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .user-nav {
-  border-bottom: solid 1px #cacaca;
-  background-color: #FFF;
   position: fixed;
+  color: #fff;
+  background-color: #000;
   top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1200px;
   z-index: 5;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
--moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
 .user-nav ul {
@@ -92,7 +93,6 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(1);
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
@@ -107,6 +107,9 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 .banner img {
   width: 30px;
   margin: 0 0 5px 5px;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+-moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
 /* MAIN NAV CATEGORIAS*/
@@ -127,6 +130,7 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
 .main-nav ul li a {
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,11 +138,11 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   width: 130px;
   height: 130px;
   border-radius: 100%;
-  background-color: #fff;
-  border: solid 1px #cacaca;
+  background-color: #000;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+transition: all .5s ease;
 
 }
 
@@ -148,13 +152,68 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
  margin-bottom: 5px;
 }
 
+.carousel-item h5, p{
+  font-size: 2em;
+}
+
+.oferta1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff6961;
+  height: 350px;
+  color: white;
+}
+
+.oferta1 h2{
+  font-size: 3em;
+}
+
+.oferta1 h3{
+  font-size: 2em;
+}
+
+.oferta2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #77dd77;
+  height: 500px;
+  color: white;
+  background-image: url('../img/sales-img.jpg');
+}
+
+.oferta2 h2{
+  font-size: 5em;
+  margin: 0px;
+}
+
+.oferta2 h3{
+  font-size: 4em;
+  margin: 0px;
+}
+
+.button-oferta{
+  border-radius: 30px;
+  padding: 10px 30px;
+  /* box-shadow: none;
+  background: none; */
+  border: none;
+  color: #ff6961;
+  background-color: white;
+
+}
+
 
 
 /* FOOTER */
 
 .main-footer {
-  background-color: #fff;
-  border-top: solid 1px #cacaca;
+  color: #fff;
+  background-color: #000;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
@@ -185,4 +244,14 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   .banner {
     height: 300px;
   }
+
+  .banner img {
+    width: 50px;
+  }
+
+  .main-nav ul li a:hover {
+    transform: scale(1.3);
+    background-color: rgb(186, 15, 15);
+  }
+
 }
