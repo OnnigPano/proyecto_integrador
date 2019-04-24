@@ -1,12 +1,11 @@
+/* BOOTSTRAP */
+@import "bootstrap.min.css";
 /* NORMALIZE */
 @import "normalize.css";
 /* FONT AWESOME */
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 /* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css?family=Share+Tech');
-/* BOOTSTRAP */
-@import "bootstrap-grid.min.css";
-@import "bootstrap.min.css";
 
 /* ESTILOS GLOBALES */
 * {
@@ -18,8 +17,12 @@ img {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none!important; /* CANCELA DECORATION BOOTSTRAP */
   color: inherit;
+}
+
+a:hover {
+  color: inherit; /* CANCELA HOVER BOOTSTRAP */
 }
 
 ul, ol {
@@ -30,6 +33,12 @@ ul, ol {
 
 body {
   font-family: 'Share Tech', sans-serif;
+  font-size: 10px;
+}
+
+span {
+  color: rgb(245, 83, 3);
+  text-transform: uppercase;
 }
 
 /* ESTILOS GENERALES */
@@ -37,31 +46,34 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0;
 }
 
-.user-nav {
+
+.main-nav {
   position: fixed;
   color: #fff;
   background-color: #000;
   top: 0;
-  left: 0;
   width: 100%;
+  max-width: 1200px;
   z-index: 5;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
-.user-nav ul {
+.main-nav ul {
+  font-size: 1.8em;
   display: flex;
   justify-content: space-between;
 }
 
-.user-nav ul li {
+.main-nav ul li {
   align-self: center;
 }
 
-.user-nav ul li a {
+.main-nav ul li a {
   display: block;
   padding: 10px;
   width: 100%;
@@ -80,12 +92,15 @@ body {
 /* LOGO Y NOMBRE */
 
 .logo {
-  margin-top: 50px;
+  font-size: 2.2em;
+  margin-top: 60px;
+  margin-left: 5px;
 }
 
 /* BANNER */
 
 .banner {
+  text-align: center;
   position: relative;
   width: 100%;
   background-image: url(../images/banner-2.jpg);
@@ -98,6 +113,21 @@ body {
   box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
+.banner h2 {
+  padding: 5px;
+  font-size: 2em;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 70%;
+  border-radius: 20px;
+}
+
+.slogan {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sociales {
   position: absolute;
   left: 0;
@@ -108,28 +138,29 @@ body {
   width: 30px;
   margin: 0 0 5px 5px;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
--moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }
 
-/* MAIN NAV CATEGORIAS*/
+/* PRODUCTS NAV CATEGORIAS*/
 
-.main-nav {
-  width: 90%;
+.products-nav {
+  width: 95%;
   margin: 20px auto;
 }
 
-.main-nav ul {
+.products-nav ul {
+  font-size: 1.7em;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.main-nav ul li {
+.products-nav ul li {
   margin: 10px 0;
 }
 
-.main-nav ul li a {
+.products-nav ul li a {
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -140,13 +171,13 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   border-radius: 100%;
   background-color: #000;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
--moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-transition: all .5s ease;
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  transition: all .5s ease;
 
 }
 
-.main-nav ul li a i {
+.products-nav ul li a i {
  font-size: 2em;
  color: rgb(245, 83, 3);
  margin-bottom: 5px;
@@ -166,12 +197,8 @@ transition: all .5s ease;
   color: white;
 }
 
-.oferta1 h2{
+.oferta1 h2, .oferta1 h3{
   font-size: 3em;
-}
-
-.oferta1 h3{
-  font-size: 2em;
 }
 
 .oferta2{
@@ -197,6 +224,7 @@ transition: all .5s ease;
 }
 
 .button-oferta{
+  font-size: 2em;
   border-radius: 30px;
   padding: 10px 30px;
   /* box-shadow: none;
@@ -207,19 +235,18 @@ transition: all .5s ease;
 
 }
 
-
-
 /* FOOTER */
 
 .main-footer {
   color: #fff;
   background-color: #000;
   -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
--moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-}
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  }
 
 .nav-footer ul {
+  font-size: 1.5em;
   padding-top: 5px;
   padding-bottom: 5px;
   display: flex;
@@ -230,28 +257,99 @@ box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
   border-top: solid 1px #cacaca;
   text-align: center;
   margin: 0 auto;
-  font-size: 0.8em;
+  font-size: 1.2em;
 }
 
 
-/* MEDIDA QUERIES */
+/* MEDIDA QUERIES PAGINA INICIO */
 
-@media (min-width: 992px ) {
-  .user-nav ul {
+@media ( min-width: 992px ) {
+  body {
+    font-size: 12px;
+  }
+
+  .main-nav ul {
     justify-content: flex-end;
   }
 
-  .banner {
-    height: 300px;
+  .products-nav ul li a {
+    width: 160px;
+    height: 160px;
   }
 
   .banner img {
     width: 50px;
   }
 
-  .main-nav ul li a:hover {
+  .products-nav ul li a:hover {
     transform: scale(1.3);
     background-color: rgb(186, 15, 15);
   }
 
+}
+
+@media ( min-width: 768px ) {
+  .logo {
+    font-size:
+  }
+
+  .banner {
+    height: 300px;
+  }
+
+  .banner h2 {
+    width: 50%;
+    font-size: 2.3em;
+  }
+
+  .carousel-item h5, p {
+    font-size: 3em;
+  }
+
+}
+
+/* ESTILOS PROFILE */
+
+.profile-container {
+  width: 95%;
+  margin: 20px auto;
+}
+
+.profile-container h2 {
+  text-align: center;
+  background-color: #000;
+  border-radius: 20px;
+  width: 90%;
+  margin: 20px auto;
+  color: #fff;
+  padding: 5px;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+}
+
+.profile-container h3 {
+  border-bottom: 2px solid rgb(245, 83, 3);
+}
+
+.profile-container ul {
+  margin: 10px 0 10px 0;
+}
+.profile-container li {
+  font-size: 1.6em;
+}
+
+.profile-container a {
+  background-color: rgb(245, 83, 3);
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 2.2em;
+  margin: 20px auto;
+  display: block;
+  width: 100px;
+  text-align: center;
+  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
 }

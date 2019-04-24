@@ -12,21 +12,29 @@
 
       <header class="main-header">
 
-        <nav class="user-nav">
+        <nav class="main-nav">
           <ul>
             <li><a href="#">Iniciar Sesión</a></li>
             <li><a href="#">Registrarse</a></li>
-            <li><a href="#"><i class="fas fa-user-alt"></i></a></li>
+            <li><a href="profile.php"><i class="fas fa-user-alt"></i></a></li>
             <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
           </ul>
         </nav>
 
         <div class="logo">
-          <h1>DIGITAL STORE</h1>
-          <h2>Un deseo. Un click. Nunca antes fue tan fácil.</h2>
+        <a href="index.php">
+          <h1>DIGITAL <span>STORE</span></h1>
+        </a>
+
         </div>
 
         <div class="banner">
+
+          <div class="slogan">
+
+            <h2>Un <span>deseo</span>. Un <span>click</span>.<br> Nunca antes fue tan <span>fácil</span>.</h2>
+
+          </div>
 
           <nav class="sociales">
             <a href="#"><img src="images/facebook.png" alt="icono facebook"></a>
@@ -40,7 +48,7 @@
 
       <main>
 
-        <nav class="main-nav">
+        <nav class="products-nav">
           <ul>
             <li><a href="#"><i class="fas fa-mobile-alt"></i>Celulares</a></li>
             <li><a href="#"><i class="fas fa-laptop"></i>Notebooks</a></li>
