@@ -355,14 +355,14 @@ span {
 }
 
 .container-detalle{
-  border: 1px black solid;
+
   display: flex;
   justify-content: space-around;
-  align-items: center;
   width: 100%;
   max-width: 1200px;
   padding: 10px;
   margin-top: 90px;
+  align-content: center;
 }
 
 .container-datos-producto{
@@ -372,12 +372,14 @@ span {
   border: 1px green solid;
   align-items: center;
   justify-content:  space-between;
-  padding: 10px;
+  padding: 20px 0px;
+
 }
 
 .container-datos-producto .button-oferta{
   color: white;
   background-color: #ff6961;
+  margin-top: 35px;
 }
 
 .container-datos-producto p{
