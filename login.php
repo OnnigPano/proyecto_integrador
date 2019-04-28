@@ -1,3 +1,9 @@
+<?php
+
+  require_once('./partials/head.php');
+  require_once('./partials/header.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,16 +14,8 @@
   </head>
   <body>
     <div class="container">
-      <nav class="main-nav">
-        LOGO COPADO
-      </nav>
-      <div class="logo">
-      <a href="index.php">
-        <h1>DIGITAL <span>STORE</span></h1>
-      </a>
-      </div>
-
-      <section>
+      <section class="margin-top">
+        <h2>¿TENES UNA CUENTA?</h2>
         <form class="" action="profile.php" method="post">
           <div class="email">
             <input type="text" name="email" value="" placeholder="Correo electrónico" required>

@@ -1,3 +1,9 @@
+<?php
+
+  require_once('./partials/head.php');
+  require_once('./partials/header.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,15 +14,7 @@
   </head>
   <body>
     <div class="container">
-      <nav class="main-nav">
-        LOGO COPADO
-      </nav>
-      <div class="container container-register">
-        <div class="logo">
-        <a href="index.php">
-          <h1>DIGITAL <span>STORE</span></h1>
-        </a>
-        <div class="onlyText-regiter">
+        <div class="onlyText-regiter margin-top">
           <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES</h3>
           <h4>Nesesitamos estos pocos datos para poder registrar tu cuenta</h4>
         </div>

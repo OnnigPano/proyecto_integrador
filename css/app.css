@@ -502,6 +502,10 @@ justify-content: center;
 flex-direction: column;
 }
 
+.margin-top{
+  margin-top: 5%;
+}
+
 @media ( min-width: 768px ) {
   .logo {
     font-size: 3em;

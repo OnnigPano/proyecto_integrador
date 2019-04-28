@@ -6,8 +6,8 @@
 
       <nav class="main-nav">
         <ul>
-          <li><a href="#">Iniciar Sesión</a></li>
-          <li><a href="#">Registrarse</a></li>
+          <li><a href="login.php">Iniciar Sesión</a></li>
+          <li><a href="register.php">Registrarse</a></li>
           <li><a href="profile.php"><span>Mi Cuenta </span><i class="fas fa-user-alt"></i></a></li>
           <li><a href="#"><span>Carrito </span><i class="fas fa-shopping-cart"></i></a></li>
         </ul>
