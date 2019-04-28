@@ -16,7 +16,7 @@
     <div class="container">
         <div class="onlyText-regiter margin-top">
           <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES</h3>
-          <h4>Nesesitamos estos pocos datos para poder registrar tu cuenta</h4>
+          <h4>Necesitamos estos pocos datos para poder registrar tu cuenta</h4>
         </div>
         </div>
         <br>
