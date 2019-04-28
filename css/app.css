@@ -386,6 +386,32 @@ body {
   width: 50%;
 }
 
+.container-img {
+  display: flex;
+  justify-content: center;
+}
+
+.container-img img{
+  width: 75%;
+  height: auto;
+  max-width: 284px;
+  max-height: 284px;
+}
+
+
+@media ( min-width: 574px ){
+
+  .container-detalle{
+    flex-direction: column;
+  }
+
+  .container-img {
+    align-items: center;
+  }
+
+}
+
+
 /* MEDIA QUERIES PAGINA INICIO */
 
 @media ( min-width: 1050px ) {
@@ -534,4 +560,6 @@ flex-direction: column;
   .products-nav ul li {
     width: 33.3%;
   }
+
+
 }
