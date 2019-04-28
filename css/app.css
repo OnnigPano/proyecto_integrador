@@ -472,7 +472,35 @@ padding-bottom: 100%;
   text-decoration: none;
   color: #ff6961;
 }
+/* PAGINA DE REGISTRO */
 
+.formRegister {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 100%;
+}
+
+.formRegister div {
+  width: 50%;
+padding: 10px;
+}
+.inputRegister input {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  width: auto;
+}
+
+label {
+  font-size: 2em;
+  color: rgb(245, 83, 3);
+}
+
+.container-register {
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
 
 @media ( min-width: 768px ) {
   .logo {
