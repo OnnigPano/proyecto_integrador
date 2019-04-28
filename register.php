@@ -20,7 +20,7 @@
         </div>
         </div>
         <br>
-        <form class="formRegister" action="/.html" method="post" >
+        <form class="formRegister" action="index.php" method="post" >
           <div class="inputRegister">
             <label for="nameRegister">Nombre</label>
             <input type="text" name="nameRegister" value="">
