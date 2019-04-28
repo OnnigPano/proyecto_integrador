@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="main-container">
 
       <header class="main-header">
 
@@ -16,14 +16,14 @@
           <ul>
             <li><a href="#">Iniciar Sesión</a></li>
             <li><a href="#">Registrarse</a></li>
-            <li><a href="profile.php"><i class="fas fa-user-alt"></i></a></li>
-            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="profile.php"><span>Mi Cuenta </span><i class="fas fa-user-alt"></i></a></li>
+            <li><a href="#"><span>Mi Carrito </span><i class="fas fa-shopping-cart"></i></a></li>
           </ul>
         </nav>
 
         <div class="logo">
         <a href="index.php">
-          <h1>DIGITAL <span>STORE</span></h1>
+          <h1>DIGITAL <span class="orange">STORE</span></h1>
         </a>
 
         </div>
@@ -32,7 +32,7 @@
 
           <div class="slogan">
 
-            <h2>Un <span>deseo</span>. Un <span>click</span>.<br> Nunca antes fue tan <span>fácil</span>.</h2>
+            <h2>Un <span class="orange">deseo</span>. Un <span class="orange">click</span>.<br> Nunca antes fue tan <span class="orange">fácil</span>.</h2>
 
           </div>
 
@@ -62,7 +62,7 @@
         <!-- Carousel  -->
 
 
-            <div class="row">
+            <div class="row no-gutters">
               <div class="container-oferta col-12 col-lg-12 col-md-12">
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -107,27 +107,28 @@
 
             </div>
 
+            <section class="section-ofertas">
 
-            <div class="row" id="container-oferta">
-              <div class="container-oferta col-12 col-lg-12 col-md-12">
-                <div class="oferta1">
-                  <h2>OFERTA 1</h2>
-                  <h3>$precio</h3>
-                  <button class="button-oferta" type="button" name="button">SHOP NOW</button>
+              <div class="row no-gutters" id="container-oferta">
+                <div class="container-oferta col-12 col-lg-8 col-md-8 col-sm-12">
+                  <div class="oferta1">
+                    <h2>OFERTA 1</h2>
+                    <h3>$1500</h3>
+                    <button class="button-oferta" type="button" name="button">SHOP NOW</button>
+                  </div>
+                </div>
+
+                <div class="container-oferta col-12 col-lg-4 col-md-4 col-sm-12">
+                  <div class="oferta2">
+                    <h3>40% SALE</h3>
+                    <h2>OFERTA 2</h2>
+                    <button class="button-oferta" type="button" name="button">SHOP NOW</button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="container-oferta col-12 col-lg-12 col-md-12">
-                <div class="oferta2">
-                  <h3>40% SALE</h3>
-                  <h2>OFERTA 2</h2>
-                  <button class="button-oferta" type="button" name="button">SHOP NOW</button>
-                </div>
-              </div>
-            </div>
-
+            </section>
+            <!-- Fin SECTION OFERTAS -->
 
       </main>
 
@@ -135,8 +136,8 @@
 
         <nav class="nav-footer">
           <ul>
-            <li><a href="#"></a><i class="fas fa-envelope"></i> Contacto</li>
-            <li><a href="#"></a><i class="fas fa-question"></i> Preguntas Frecuentes</li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contacto</li></a>
+            <li><a href="faq.php"><i class="fas fa-question"></i> Preguntas Frecuentes</li></a>
           </ul>
         </nav>
 

@@ -46,7 +46,7 @@
 
       </header>
 
-      <section class="profile-container">
+      <section class="section-container">
 
         <h2>Datos de mi cuenta</h2>
 
@@ -73,16 +73,17 @@
           <li>Lima 1111, Capital Federal, Argentina.</li>
         </ul>
 
-        <a href="index.php">Volver</a>
+        <a href="index.php">Inicio</a>
 
       </section>
+      <!--FIN SECTION CONTAINER -->
 
       <footer class="main-footer">
 
         <nav class="nav-footer">
           <ul>
-            <li><a href="#"></a><i class="fas fa-envelope"></i> Contacto</li>
-            <li><a href="#"></a><i class="fas fa-question"></i> Preguntas Frecuentes</li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contacto</li></a>
+            <li><a href="faq.php"><i class="fas fa-question"></i> Preguntas Frecuentes</li></a>
           </ul>
         </nav>
 
