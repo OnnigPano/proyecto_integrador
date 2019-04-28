@@ -426,6 +426,54 @@ body {
 
 }
 
+/* PAGINA DE LOGIN */
+input {
+display: block;
+height: 40px;
+width: 98%;
+padding: 0 16px;
+border: 1px solid #d9d9d9;
+font-size: large;
+margin: 5px;
+}
+
+.buttonLogin {
+margin: 16px 5px;
+background-color: black;
+border: 0;
+border-radius: 2px;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+font-size: 1.6rem;
+font-family: inherit;
+height: 40px;
+width: 98%;
+}
+
+.forgot-password {
+display: block;
+margin: 16px 0 0;
+font-size: 1.4rem;
+background-color: transparent;
+border: 0;
+color: #ff6961;
+text-align: center;
+}
+.join {
+display: block;
+margin: 12px 0 0;
+font-size: 1.4rem;
+color: black;
+text-align: center;
+padding-bottom: 100%;
+}
+.join a {
+  text-decoration: none;
+  color: #ff6961;
+}
+
+
 @media ( min-width: 768px ) {
   .logo {
     font-size: 3em;
