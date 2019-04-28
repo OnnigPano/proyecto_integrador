@@ -418,7 +418,10 @@ body {
 
   .products-nav ul li a:hover {
     transform: scale(1.3);
-    background-color: rgb(186, 15, 15);
+    background-color: rgb(245, 83, 3);
+  }
+  .products-nav ul li a:hover i {
+    color: #fff;
   }
 
 }
@@ -450,11 +453,5 @@ body {
   }
   .products-nav ul li {
     width: 33.3%;
-  }
-}
-
-@media ( max-width: 1170px ) {
-  .main-nav {
-    left: 0;
   }
 }
