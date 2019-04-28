@@ -16,11 +16,11 @@
     <div class="container">
         <div class="onlyText-regiter margin-top">
           <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES</h3>
-          <h4>Nesesitamos estos pocos datos para poder registrar tu cuenta</h4>
+          <h4>Necesitamos estos pocos datos para poder registrar tu cuenta</h4>
         </div>
         </div>
         <br>
-        <form class="formRegister" action="/.html" method="post" >
+        <form class="formRegister" action="index.php" method="post" >
           <div class="inputRegister">
             <label for="nameRegister">Nombre</label>
             <input type="text" name="nameRegister" value="">
