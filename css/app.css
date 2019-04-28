@@ -60,9 +60,9 @@ body {
   width: 100vw;
   max-width: 1200px;
   z-index: 5;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
 }
 
 .main-nav ul {
@@ -114,9 +114,9 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
 }
 
 .banner h2 {
@@ -143,9 +143,9 @@ body {
 .banner img {
   width: 30px;
   margin: 0 0 5px 5px;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
 }
 
 /* PRODUCTS NAV CATEGORIAS*/
@@ -178,11 +178,10 @@ body {
   height: 130px;
   border-radius: 100%;
   background-color: #000;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
   transition: all .5s ease;
-
 }
 
 .products-nav ul li a i {
@@ -192,8 +191,6 @@ body {
 }
 
 /* CAROUSEL */
-
-
 
 .carousel-item h5, p{
   font-size: 2em;
@@ -244,10 +241,38 @@ body {
   border: none;
   color: #ff6961;
   background-color: white;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+}
 
+/* SECTION ARTICULOS */
+
+.section-articulos {
+  margin-bottom: 30px;
+}
+.articulo{
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 5px 0;
+  padding: 0 0 10px 0;
+}
+
+.articulo h4{
+  margin: 0;
+}
+
+.button-buy-now{
+  border-radius: 30px;
+  padding: 10px 30px;
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  border: none;
+  background-color: #ff6961;
+  color: white;
 }
 
 /* FOOTER */
@@ -255,9 +280,9 @@ body {
 .main-footer {
   color: #fff;
   background-color: #000;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
   }
 
 .nav-footer ul {
@@ -282,7 +307,7 @@ body {
   margin: 30px auto;
 }
 
-.section-container h2 {
+.section-container h2, .section-articulos h2 {
   font-size: 3em;
   text-align: center;
   background-color: #000;
@@ -291,9 +316,9 @@ body {
   margin: 20px auto;
   color: #fff;
   padding: 5px;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
 }
 
 .section-container h3 {
@@ -318,9 +343,9 @@ body {
   display: block;
   width: 100px;
   text-align: center;
-  -webkit-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 15px -6px rgba(0,0,0,1);
+  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
+  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
 }
 
 .faq-text {
@@ -376,6 +401,10 @@ body {
 
   .main-nav ul {
     justify-content: flex-end;
+  }
+
+  .products-nav {
+    margin: 40px auto;
   }
 
   .products-nav ul li a {

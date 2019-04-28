@@ -10,7 +10,7 @@
 
 
 
-    <div class="container">
+    <div class="main-container">
       <nav class="main-nav">
         <ul>
           <li><a href="#">Iniciar Sesión</a></li>
