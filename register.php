@@ -5,23 +5,15 @@
   require_once('./partials/header.php');
 
 ?>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/app.css">
-    <meta charset="utf-8">
-    <title>Registro | Digital Sotre </title>
-  </head>
-  <body>
+
     <div class="container">
-        <div class="onlyText-regiter margin-top">
+        <div class="onlyText-register margin-top">
           <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES</h3>
           <h4>Necesitamos estos pocos datos para poder registrar tu cuenta</h4>
         </div>
-        </div>
+
         <br>
-        <form class="formRegister" action="index.php" method="post" >
+        <form class="formRegister" action="index.php" method="post" style="padding-bottom: 5%">
           <div class="inputRegister">
             <label for="nameRegister">Nombre</label>
             <input type="text" name="nameRegister" value="">
@@ -50,17 +42,10 @@
               <button class="buttonLogin" type="submit" name="buttonRegister">CREAR CUENTA</button>
           </div>
         </form>
-      </div>
-      <footer class="main-footer">
-        <nav class="nav-footer">
-          <ul>
-            <li><a href="#"></a><i class="fas fa-envelope"></i> Contacto</li>
-            <li><a href="#"></a><i class="fas fa-question"></i> Preguntas Frecuentes</li>
-          </ul>
-        </nav>
+        </div>
 
-        <p> &copy; Todos los derechos reservados</p>
-      </footer>
-    </div>
-  </body>
-</html>
+        <?php
+
+          require_once('./partials/footer.php');
+
+        ?>

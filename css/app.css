@@ -405,6 +405,11 @@ body {
   max-height: 284px;
 }
 
+.formRegister{
+  padding-bottom: 5%;
+}
+
+
 
 @media ( min-width: 574px ){
 
