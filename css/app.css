@@ -464,18 +464,26 @@ body {
 
 }
 
-/* PAGINA DE LOGIN */
-input {
-display: block;
-height: 40px;
-width: 98%;
-padding: 0 16px;
-border: 1px solid #d9d9d9;
-font-size: large;
-margin: 5px;
+/* FORMATO FORMULARIO */
+.main-container-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 5%;
 }
 
-.buttonLogin {
+input {
+display: flex;
+border: 0;
+border-bottom: 1px solid #ccc;
+width: 90%;
+height: 50px;
+margin: 5%;
+padding: 0 16px;
+font-size: large;
+}
+
+.button-form {
 margin: 16px 5px;
 background-color: black;
 border: 0;
@@ -486,8 +494,10 @@ cursor: pointer;
 font-size: 1.6rem;
 font-family: inherit;
 height: 40px;
-width: 98%;
+width: 70%;
 }
+
+/* PAGINA DE LOGIN */
 
 .forgot-password {
 display: block;
@@ -498,52 +508,52 @@ border: 0;
 color: #ff6961;
 text-align: center;
 }
-.join {
+.join-formLogin {
 display: block;
 margin: 12px 0 0;
 font-size: 1.4rem;
 color: black;
 text-align: center;
-padding-bottom: 100%;
+padding-bottom: 5%;
 }
-.join a {
+
+.join-formLogin a {
   text-decoration: none;
-  color: #ff6961;
+    color: #ff6961;
+  font-size: 1.4rem;
 }
+
 /* PAGINA DE REGISTRO */
+ label {
+  font-size: 1.4rem;
+  text-align: left;
+ }
+  .avatarInput{
+    border:0px;
+  }
 
-.formRegister {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-bottom: 100%;
+  .message-register{
+    text-align: left;
+    margin: 5%;
+  }
+
+@media (min-width: 768px) {
+  .formRegister{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    text-align: left;
+    padding: 5%;
+  }
+
+  .boxRegistry{
+    width: 50%;
+  }
 }
 
-.formRegister div {
-  width: 50%;
-padding: 10px;
-}
-.inputRegister input {
-  border: 0;
-  border-bottom: 1px solid #ccc;
-  width: auto;
-}
 
-label {
-  font-size: 2em;
-  color: #ff6961;
-}
-
-.container-register {
-display: flex;
-justify-content: center;
-flex-direction: column;
-}
-
-.margin-top{
-  margin-top: 5%;
-}
-
+/* MEDIA QUERY  */
 @media ( min-width: 768px ) {
   .logo {
     font-size: 3em;

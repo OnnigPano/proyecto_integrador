@@ -6,43 +6,51 @@
 
 ?>
 
-    <div class="container">
-        <div class="onlyText-register margin-top">
-          <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES</h3>
-          <h4>Necesitamos estos pocos datos para poder registrar tu cuenta</h4>
+    <section class="main-container-form">
+        <div class="message-register">
+          <h3>CREÁ TU CUENTA Y COMPRA DESDE DONDE ESTES.</h3>
+          <h4>Necesitamos estos pocos datos para poder registrar tu cuenta:</h4>
         </div>
 
         <br>
-        <form class="formRegister" action="index.php" method="post" style="padding-bottom: 5%">
-          <div class="inputRegister">
-            <label for="nameRegister">Nombre</label>
+        <form class="formRegister" action="index.php" method="post">
+
+          <div class="boxRegistry">
+            <label for="">Nombre</label>
             <input type="text" name="nameRegister" value="">
           </div>
-          <div class="inputRegister">
-            <label for="surnameRegister">Apellido</label>
+
+          <div class="boxRegistry">
+            <label for="">Apellido</label>
             <input type="text" name="surnameRegister" value="">
           </div>
-          <div class="inputRegister">
+
+          <div class="boxRegistry">
             <label for="userName">Usuario</label>
             <input type="text" name="userName" value="">
           </div>
-          <div class="inputRegister">
-            <label for="emailUser">Correo electrónico</label>
+
+          <div class="boxRegistry">
+            <label for="">Correo electrónico</label>
             <input type="email" name="emailUser" value="">
           </div>
-          <div class="inputRegister">
-            <label for="userPassword">Contraseña</label>
+
+          <div class="boxRegistry">
+            <label for="">Contraseña</label>
             <input type="password" name="userPassword" value="">
           </div>
-          <div class="inputRegister">
-            <label for="avatarRegister">Imagen</label>
-            <input type="file" name="avatarRegister" value="">
+
+          <div class="boxRegistry">
+            <label for="">Imagen</label>
+            <input class="avatarInput" type="file" name="avatarRegister" value="">
           </div>
-          <div class="buttonRegister">
-              <button class="buttonLogin" type="submit" name="buttonRegister">CREAR CUENTA</button>
+
+          <div class="boxRegistry">
+              <button class="button-form" type="submit" name="buttonRegister">CREAR CUENTA</button>
           </div>
+
         </form>
-        </div>
+      </section>
 
         <?php
 

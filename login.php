@@ -6,30 +6,32 @@
 
 ?>
 
-    <div class="container">
-      <section class="margin-top">
+      <section class="main-container-form">
         <h2>¿TENES UNA CUENTA?</h2>
-        <form class="" action="profile.php" method="post">
+        <form class="container-form" action="profile.php" method="post">
+
           <div class="email">
             <input type="text" name="email" value="" placeholder="Correo electrónico" required>
           </div>
+
           <div class="password">
             <input type="password" name="password" value="" placeholder= "Contraseña" required>
           </div>
-          <div class="button">
-            <button class="buttonLogin" type="submit" name="buttonLogin">Inicia sesión</button>
+
+          <div class="">
+            <button class="button-form" type="submit" name="buttonLogin">Inicia sesión</button>
           </div>
+
           <a class="forgot-password" href="##">¿Has olvidado tu contraseña? </a>
+
           <br>
-          <span class="join" style="padding-bottom: 5%">
+
+          <span class="join-formLogin" >
            ¿Todavía no eres miembro?
             <a href="register.php">¡Únete ahora! </a>
           </span>
         </form>
       </section>
-
-    </div>
-
     <?php
 
       require_once('./partials/footer.php');
