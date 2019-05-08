@@ -4,6 +4,7 @@
 session_start();
 
 define(ALLOWED_FORMAT_IMAGE, ['jpg','jpeg','png']);
+define(IMAGE_FILE_PATH, dirname(__FILE__) . '/data/avatars/');
 
 
 function registerValidate(){
@@ -52,6 +53,16 @@ function registerValidate(){
 
 
    return $errors;
+}
+
+function saveImg(){
+  $extension = pathinfo($_FILES['$avatarRegister']['name'], PATHINFO_EXTENSION);
+  $tempFile = $_FILES['avatarRegister']['tmp_name'];
+  $finalName = uniqid( 'img_') . '.' . $extension;
+  $finalPath = IMAGE_FILE_PATH . $finalName;
+  move_uploaded_file($tempFile, $finalPath);
+
+  return $finalName;
 }
 
 
