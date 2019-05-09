@@ -24,28 +24,7 @@ $emailRegister = '';
     $surnameRegister= isset($_POST["surnameRegister"]) ? trim($_POST["surnameRegister"]) : " " ;
     $nicknameRegister= isset($_POST["nicknameRegister"]) ? trim($_POST["nicknameRegister"]) : " " ;
     $nicknameRegister= isset($_POST["emailRegister"]) ? trim($_POST["emailRegister"]) : " " ;
-    // $passwordRegister= isset($_POST["passwordRegister"]) ? trim($_POST["passwordRegister"]) : " " ;
-
-
-    // $errors=[];
-    //
-    // if (empty($nameRegister)) {
-    //   $errors["nameRegister"] = "El campo NOMBRE se encuentra vacio.";
-    // }
-    //
-    // if (empty($surnameRegister)) {
-    //   $errors["surnameRegister"] = "El campo APELLIDO se encuentra vacio.";
-    // }
-    //
-    // if (empty($nicknameRegister)) {
-    //   $errors["nicknameRegister"] = "El campo USUARIO se encuentra vacio.";
-    // } //FALTA UN "ELSE" QUE VERIFIQUE QUE NO HAYA UN MISMO USUARIO EN LA BASE
-    //
-    // if (empty($passwordRegister)) {
-    //   $errors["passwordRegister"] = "El campo CONTRASEÑA se encuentra vacio.";
-    // } elseif (filter_var($passwordRegister,FILTER_VALIDATE_EMAIL)) {
-    //     $errors["passwordRegister"] = "El formato de la contraseña es invalida.";
-    //   }
+    
 
     $errorsInRegister = registerValidate();
 
