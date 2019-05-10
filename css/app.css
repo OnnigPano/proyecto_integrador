@@ -382,11 +382,6 @@ body {
   max-height: 284px;
 }
 
-.formRegister{
-  padding-bottom: 5%;
-}
-
-
 
 @media ( min-width: 574px ){
 
@@ -448,56 +443,62 @@ body {
 }
 
 /* FORMATO FORMULARIO */
+
+.formRegister {
+  padding-bottom: 5%;
+}
+
 .main-container-form{
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 80px;
 }
 
-input {
-display: flex;
-border: 0;
-border-bottom: 1px solid #ccc;
-width: 90%;
-height: 50px;
-margin: 5%;
-padding: 0 16px;
-font-size: large;
+.main-container-form input {
+  display: flex;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  width: 90%;
+  height: 50px;
+  margin: 5%;
+  padding: 0 16px;
+  font-size: large;
 }
 
 .button-form {
-margin: 16px 5px;
-background-color: black;
-border: 0;
-border-radius: 2px;
-box-sizing: border-box;
-color: #fff;
-cursor: pointer;
-font-size: 1.6rem;
-font-family: inherit;
-height: 40px;
-width: 70%;
+  margin: 16px 5px;
+  background-color: black;
+  border: 0;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-family: inherit;
+  height: 40px;
+  width: 70%;
 }
 
 /* PAGINA DE LOGIN */
 
 .forgot-password {
-display: block;
-margin: 16px 0 0;
-font-size: 1.4rem;
-background-color: transparent;
-border: 0;
-color: #ff6961;
-text-align: center;
+  display: block;
+  margin: 16px 0 0;
+  font-size: 1.4rem;
+  background-color: transparent;
+  border: 0;
+  color: #ff6961;
+  text-align: center;
 }
+
 .join-formLogin {
-display: block;
-margin: 12px 0 0;
-font-size: 1.4rem;
-color: black;
-text-align: center;
-padding-bottom: 5%;
+  display: block;
+  margin: 12px 0 0;
+  font-size: 1.4rem;
+  color: black;
+  text-align: center;
+  padding-bottom: 5%;
 }
 
 .join-formLogin a {
@@ -507,7 +508,8 @@ padding-bottom: 5%;
 }
 
 /* PAGINA DE REGISTRO */
- label {
+
+.main-container-form label {
   font-size: 1.4rem;
   text-align: left;
  }
@@ -532,6 +534,12 @@ padding-bottom: 5%;
 
   .boxRegistry{
     width: 50%;
+  }
+}
+
+@media ( min-width: 992px ) {
+  .main-container-form {
+    margin-top: 0;
   }
 }
 

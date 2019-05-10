@@ -5,15 +5,15 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
-$errorsInRegister = [];
+  $errorsInRegister = [];
 
 
-//Variables persistencia
+  //Variables persistencia
 
-$nameRegister = '';
-$surnameRegister = '';
-$nicknameRegister = '';
-$emailRegister = '';
+  $nameRegister = '';
+  $surnameRegister = '';
+  $nicknameRegister = '';
+  $emailRegister = '';
 
 
 
@@ -24,7 +24,7 @@ $emailRegister = '';
     $surnameRegister= isset($_POST["surnameRegister"]) ? trim($_POST["surnameRegister"]) : " " ;
     $nicknameRegister= isset($_POST["nicknameRegister"]) ? trim($_POST["nicknameRegister"]) : " " ;
     $nicknameRegister= isset($_POST["emailRegister"]) ? trim($_POST["emailRegister"]) : " " ;
-    
+
 
     $errorsInRegister = registerValidate();
 

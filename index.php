@@ -3,6 +3,7 @@
   $title = 'Digital Store - DS';
   require_once('./partials/head.php');
   require_once('./partials/header.php');
+  require_once'partials/banner.php';
 
 ?>
 
