@@ -60,6 +60,10 @@ body {
   font-size: 2em;
 }
 
+.main-navbar ul li:hover {
+  filter: brightness(0.5);
+}
+
 .navbar-brand {
   font-size: 1.5em;
 }
@@ -466,6 +470,10 @@ body {
   font-size: large;
 }
 
+.main-container-form select {
+  font-size: large;
+}
+
 .button-form {
   margin: 16px 5px;
   background-color: black;
@@ -478,6 +486,11 @@ body {
   font-family: inherit;
   height: 40px;
   width: 70%;
+}
+
+.boxRegistry div {
+  text-align: center;
+  font-size: 1.8em;
 }
 
 /* PAGINA DE LOGIN */
