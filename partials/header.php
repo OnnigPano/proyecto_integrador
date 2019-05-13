@@ -1,3 +1,11 @@
+<?php
+
+  require_once('register-controller.php');
+
+
+?>
+
+
 <body>
 
   <div class="main-container">
@@ -23,13 +31,20 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="#">Carrito<i class="fas fa-shopping-cart ml-1"></i></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="login.php">Iniciar Sesión</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="register.php">Registrarse</a>
-            </li>
+              <!-- Menú dinámico para usuario registrado -->
+              <?php if ( !isLoged() ): ?>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="login.php">Iniciar Sesión</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="register.php">Registrarse</a>
+                  </li>
+              <?php else: ?>
+                <li class="nav-item active">
+                  <a class="nav-link" href="logout.php">Cerrar Sesión</a>
+                </li>
+              <?php endif; ?>
+
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control m-0 mr-2" type="search" placeholder="Buscar..." aria-label="Buscar">

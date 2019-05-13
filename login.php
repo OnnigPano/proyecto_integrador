@@ -3,6 +3,12 @@
   $title = 'Iniciar Sesión - DS';
   require_once('./partials/head.php');
   require_once('./partials/header.php');
+  require_once'register-controller.php';
+
+  if (isLoged()) {
+    header('location: index.php');
+    exit;
+  }
 
 ?>
 

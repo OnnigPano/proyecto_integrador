@@ -5,6 +5,11 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
+  if (isLoged()) {
+    header('location: index.php');
+    exit;
+  }
+
   $errorsInRegister = [];
 
   // Array de países para el select
@@ -46,11 +51,19 @@
     $errorsInRegister = registerValidate();
 
     if (!$errorsInRegister) {
+
       $imgName = saveImg();
+
       $_POST['avatar'] = $imgName;
+      $_POST['id'] = generateId();
 
 
       $thisUser = saveUser();
+
+      setcookie( 'userLoged', $thisUser['email'], time() + 3600000 );
+
+      login($thisUser);
+
     }
 
     //myDeBug($errorsInRegister);

@@ -90,12 +90,13 @@ function saveImg(){
 
 function saveUser(){
 
-  $nameRegister= trim($_POST['nameRegister']);
-  $surnameRegister= trim($_POST['surnameRegister']);
-  $nicknameRegister= trim($_POST['nicknameRegister']);
-  $emailRegister = trim($_POST['emailRegister']);
+  $_POST['nameRegister'] = trim($_POST['nameRegister']);
+  $_POST['surnameRegister'] = trim($_POST['surnameRegister']);
+  $_POST['nicknameRegister'] = trim($_POST['nicknameRegister']);
+  $_POST['emailRegister'] = trim($_POST['emailRegister']);
+  $_POST['passwordRegister'] = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
 
-  unset($_POST['passwordRegister']);
+  unset($_POST['repassword']);
 
   $userToSave = $_POST;
 
@@ -137,9 +138,21 @@ function checkEmailExist($email){
       return true;
     }
   }
-return false;
+  return false;
 }
 
+function login($user) {
+  unset($user['passwordRegister']);
+
+  $_SESSION['userLoged'] = $user;
+
+  header('location: profile.php');
+  exit;
+}
+
+function isLoged() {
+  return isset($_SESSION['userLoged']);
+}
 
 //FUNCION PARA DEBAGUEAR
 function myDeBug($data){
