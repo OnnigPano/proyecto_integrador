@@ -156,7 +156,7 @@ function isLoged() {
 
 //FUNCION PARA DEBAGUEAR
 function myDeBug($data){
-      echo "<pre>";
+    echo "<pre>";
 		var_dump($data);
 		echo "</pre>";
 		exit;

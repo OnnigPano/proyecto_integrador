@@ -5,7 +5,7 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
-  if (isLoged()) {
+  if ( isLoged() ) {
     header('location: index.php');
     exit;
   }
@@ -67,8 +67,8 @@
     }
 
     //myDeBug($errorsInRegister);
-      //FALTA LOGGEARLO.
-     }
+    
+  }
 
 
 
