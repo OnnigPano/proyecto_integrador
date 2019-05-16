@@ -5,10 +5,31 @@
   require_once('./partials/header.php');
   require_once'register-controller.php';
 
+
   if (isLoged()) {
-    header('location: index.php');
+   header('location: profile.php');
     exit;
   }
+
+  $errorsInLogin= [];
+
+  $email = "";
+
+  if ($_POST) {
+    $emailEntry = trim($_POST["email"]);
+
+    $errorsInLogin = loginValidate();
+
+    if (!$errorsInLogin) {
+      $userToLogin = getUserByEmail($email);
+
+      if (insset($_POST["rememberUser"])) {
+        setcookie("userLoged",$email,time() + 3000);
+      }
+      login($userToLogin);
+    }
+  }
+
 
 ?>
 
@@ -17,11 +38,35 @@
         <form class="container-form" action="profile.php" method="post">
 
           <div class="email">
-            <input type="text" name="email" value="" placeholder="Correo electrónico" required>
+            <input
+            type="text"
+            name="email"
+            class="form-control <?= isset( $errorsInLogin['email'] ) ? "is-invalid" : null ?> "
+            value="<?= $email; ?>"
+            placeholder="Correo electrónico"
+            required>
+          </div>
+          <div class="invalid-feedback">
+            <?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?>
           </div>
 
           <div class="password">
-            <input type="password" name="password" value="" placeholder= "Contraseña" required>
+            <input
+            type="password"
+            name="password"
+            placeholder= "Contraseña"
+            required>
+          </div>
+          <div class="invalid-feedback">
+            <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?>
+          </div>
+
+
+          <div class="">
+            <label for=""><input  type="checkbox" name="rememberUser">
+            Recordarme
+          </label>
+
           </div>
 
           <div class="">

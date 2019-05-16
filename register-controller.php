@@ -8,6 +8,11 @@ define('IMAGE_FILE_PATH', dirname(__FILE__) . '/data/avatars/');
 define('JSON_USERS_PATH', dirname(__FILE__) . '/data/users.json');
 
 
+if (isset($_COOKIE["userLoged"]) && !isLoged()) {
+  $theUser=getUserByEmail($_COOKIE["userLoged"]);
+
+  $_SESSION["userLoged"] = $theUser;
+}
 
 function registerValidate(){
 
@@ -131,8 +136,6 @@ function generateId(){
 
 function checkEmailExist($email){
 
-  $allUsers = getAllUsers();
-
   foreach ($allUsers as $user) {
     if ($user['emailRegister'] == $email) {
       return true;
@@ -154,6 +157,40 @@ function isLoged() {
   return isset($_SESSION['userLoged']);
 }
 
+function loginValidate(){
+  $errors=[];
+
+  $emailValidate=trim($_POST["email"]);
+  $passwordValidate=trim($_POST["password"]);
+
+  if (empty($emailValidate)) {
+    $errors["email"]="El email es OBLIGATORIO,";
+  }elseif (!filter_var($emailValidate,FILTER_VALIDATE_EMAIL)) {
+    $errors["email"]="El formato del correo electrónico es inválido,";
+  }elseif (!checkEmailExist($emailValidate)) {
+    $errors["email"]="Las credenciales no coinciden.";
+  }else {
+    $theUser=getUserByEmail($emailValidate);
+
+    if (password_verify($passwordValidate,$theUser["password"])) {
+      $errors["password"]="Las credenciales no coinciden.";
+    }
+  }
+  if (empty($passwordValidate)) {
+    $errors["password"]="El campo password es OBLIGATORIO.";
+  }
+  return $errors;
+}
+
+function getUserByEmail($email){
+  $allUsers=getAllUsers();
+
+  foreach ($allUsers as $oneUser) {
+    if ($oneUser["mail"] == $email) {
+      return $oneUser;
+    }
+  }
+}
 //FUNCION PARA DEBAGUEAR
 function myDeBug($data){
     echo "<pre>";
