@@ -217,8 +217,6 @@ body {
   font-size: 2em;
   border-radius: 30px;
   padding: 10px 30px;
-  /* box-shadow: none;
-  background: none; */
   border: none;
   color: #ff6961;
   background-color: white;
@@ -232,6 +230,7 @@ body {
 .section-articulos {
   margin-bottom: 30px;
 }
+
 .articulo{
   max-width: 600px;
   display: flex;
@@ -285,6 +284,29 @@ body {
 
 /* ESTILOS SECTION PROFILE Y FAQ */
 
+.profile-container {
+  margin-top: 80px;
+}
+
+.profile-avatar {
+  max-width: 200px;
+}
+
+.profile-form label {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+
+.profile-form input,
+.profile-form select,
+.profile-form .invalid-feedback {
+  font-size: 1.8em
+}
+
+.profile-form span {
+  font-size: 1.4em;
+}
+
 .section-container {
   width: 95%;
   margin: 30px auto;
@@ -299,33 +321,6 @@ body {
   margin: 20px auto;
   color: #fff;
   padding: 5px;
-  -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
-  box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
-}
-
-.section-container h3 {
-  border-bottom: 2px solid #ff6961;
-}
-
-.section-container ul {
-  margin: 10px 0 10px 0;
-}
-.section-container li {
-  font-size: 1.6em;
-  margin-left: 10px;
-}
-
-.section-container a {
-  background-color: #ff6961;
-  color: #fff;
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 2.2em;
-  margin: 20px auto;
-  display: block;
-  width: 100px;
-  text-align: center;
   -webkit-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
   -moz-box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
   box-shadow: 0px 3px 26px -6px rgba(0,0,0,1);
@@ -551,7 +546,8 @@ body {
 }
 
 @media ( min-width: 992px ) {
-  .main-container-form {
+  .main-container-form,
+  .profile-container {
     margin-top: 0;
   }
 }

@@ -7,6 +7,6 @@ E-Market de Tecnología. Facil, lindo e intuitivo.
 ## Authors
 
 * **Onnig** (https://github.com/OnnigPano)
-* **Herni** (https://github.com/Herni)
+* **Herni** (https://github.com/hernitorres)
 * **Tiago** (https://github.com/Tiagoman)
 * **Ciro** (https://github.com/CiroGg)

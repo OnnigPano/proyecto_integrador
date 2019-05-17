@@ -14,19 +14,20 @@ function profileValidate(){
    $countryRegister = $_POST['countryRegister'];
 
    //Almacenamos el campo avatar solo si el usuario quiere editarlo.
-   if ( isset($_FILES) ) {
-     $avatarRegister = $_FILES['avatarRegister'];
+   if ( count($_FILES) != 0) {
+     $avatar = $_FILES['avatarRegister'];
 
      // Validamos la subida si el usuario eligió un nuevo avatar.
-     if ($avatarRegister['error'] = UPLOAD_ERR_OK) {
+     if ($avatar['error'] = UPLOAD_ERR_OK) {
 
-        $extension = pathinfo($avatarRegister['name'], PATHINFO_EXTENSION);
+       $extension = pathinfo($avatar['name'], PATHINFO_EXTENSION);
 
-      if (!in_array($extension,ALLOWED_FORMAT_IMAGE)) {
-          $errors['avatarRegister'] = 'Revise el formato de la imagen.';
-      }
+       if (!in_array($extension,ALLOWED_FORMAT_IMAGE)) {
+         $errors['avatarRegiste'] = 'Revise el formato de la imagen.';
+       }
      }
    }
+
 
    if (empty($nameRegister)) {
       $errors['nameRegister'] = 'El campo nombre es OBLIGATORIO';
@@ -104,6 +105,7 @@ function saveUserEdited() {
       $allUsers[$key]['surnameRegister'] = trim($_POST['surnameRegister']);
       $allUsers[$key]['nicknameRegister'] = trim($_POST['nicknameRegister']);
       $allUsers[$key]['emailRegister'] = trim($_POST['emailRegister']);
+      $allUsers[$key]['countryRegister'] = $_POST['countryRegister'];
       //Si el usuario cambia el password, hasheamos y almacenamos.
       if ( $_POST['passwordRegister'] != "" ) {
       $allUsers[$key]['passwordRegister'] = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
@@ -112,9 +114,9 @@ function saveUserEdited() {
       /*
       si el usuario eligió un nuevo avatar, vamos a almacenar el valor para luego reemplazar su antiguo avatar
       */
-      if ( isset($_FILES) ) {
+      if ( $_FILES['avatarRegister']['name'] != "" ) {
       $imgName = saveImg();
-      $allUsers[$key]['avatar'] = $imgName;
+      $allUsers[$key]['avatarRegister'] = $imgName;
       //aca se guarda el nuevo avatar, PERO EL ANTERIOR NO SE ELIMINA DE LA CARPETA DATA
       }
 

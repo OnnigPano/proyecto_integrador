@@ -102,6 +102,7 @@ function saveUser(){
   $_POST['passwordRegister'] = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
 
   unset($_POST['repassword']);
+  unset($_POST['buttonRegister']);
 
   $userToSave = $_POST;
 

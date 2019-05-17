@@ -54,7 +54,7 @@
 
       $imgName = saveImg();
 
-      $_POST['avatar'] = $imgName;
+      $_POST['avatarRegister'] = $imgName;
       $_POST['id'] = generateId();
 
 
@@ -67,7 +67,7 @@
     }
 
     //myDeBug($errorsInRegister);
-    
+
   }
 
 
