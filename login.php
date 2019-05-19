@@ -48,7 +48,7 @@
             placeholder="Correo electrónico"
             required>
             <div class="invalid-feedback">
-            <?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?>
+              <span><?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?> </span>
             </div>
           </div>
 
@@ -56,11 +56,12 @@
             <input
             type="password"
             name="password"
+            class="form-control <?= isset( $errorsInLogin['password'] ) ? "is-invalid" : null ?> "
             placeholder= "Contraseña"
             required>
 
             <div class="invalid-feedback">
-              <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?>
+            <span>  <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?> </span>
             </div>
           </div>
 

@@ -175,7 +175,7 @@ function loginValidate(){
     $theUser = getUserByEmail($emailValidate);
 
     if ( !password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
-      $errors["passwordRegister"]="Las credenciales no coinciden.";
+      $errors["password"]="Las credenciales no coinciden.";
     }
   }
   if ( empty($passwordValidate) ) {
