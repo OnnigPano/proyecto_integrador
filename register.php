@@ -5,7 +5,7 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
-  if ( isLoged() ) {
+  if ( isLogged() ) {
     header('location: index.php');
     exit;
   }

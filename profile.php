@@ -6,7 +6,7 @@
   require_once'register-controller.php';
   require_once'edit-profile-controller.php';
 
-  if ( !isLoged() ) {
+  if ( !isLogged() ) {
     header('location: login.php');
     exit;
   }
