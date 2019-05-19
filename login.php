@@ -1,12 +1,12 @@
 <?php
 
   $title = 'Iniciar Sesión - DS';
-  require_once('./partials/head.php');
-  require_once('./partials/header.php');
-  require_once'register-controller.php';
+  require_once './partials/head.php';
+  require_once './partials/header.php';
+  require_once 'register-controller.php';
 
 
-  if (isLoged()) {
+  if ( isLogged() ) {
    header('location: profile.php');
     exit;
   }
@@ -16,16 +16,18 @@
   $email = "";
 
   if ($_POST) {
-    $emailEntry = trim($_POST["email"]);
+
+    $email = trim($_POST['email']);
 
     $errorsInLogin = loginValidate();
 
     if (!$errorsInLogin) {
       $userToLogin = getUserByEmail($email);
 
-      if (insset($_POST["rememberUser"])) {
+      if ( isset($_POST["rememberUser"]) ) {
         setcookie("userLoged",$email,time() + 3000);
       }
+
       login($userToLogin);
     }
   }
