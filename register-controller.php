@@ -8,7 +8,7 @@ define('IMAGE_FILE_PATH', dirname(__FILE__) . '/data/avatars/');
 define('JSON_USERS_PATH', dirname(__FILE__) . '/data/users.json');
 
 
-if ( isset($_COOKIE["userLoged"]) && !isLoged() ) {
+if ( isset($_COOKIE["userLoged"]) && !isLogged() ) {
   $theUser = getUserByEmail($_COOKIE["userLoged"]);
 
   $_SESSION["userLoged"] = $theUser;
@@ -147,7 +147,7 @@ function checkEmailExist($email){
 }
 
 function login($user) {
-  unset($user['passwordRegister']);
+  unset($user['password']);
 
   $_SESSION['userLoged'] = $user;
 
@@ -162,19 +162,19 @@ function isLogged() {
 function loginValidate(){
   $errors=[];
 
-  $emailValidate = trim($_POST["emailRegister"]);
-  $passwordValidate = trim($_POST["passwordRegister"]);
+  $emailValidate = trim($_POST["email"]);
+  $passwordValidate = trim($_POST["password"]);
 
   if ( empty($emailValidate) ) {
-    $errors["emailRegister"]="El email es OBLIGATORIO,";
-  }elseif (!filter_var($emailValidate,FILTER_VALIDATE_EMAIL)) {
-    $errors["emailRegister"]="El formato del correo electrónico es inválido,";
-  }elseif (!checkEmailExist($emailValidate)) {
-    $errors["emailRegister"]="Las credenciales no coinciden.";
-  }else {
+    $errors["email"]="El email es OBLIGATORIO,";
+  } elseif (!filter_var($emailValidate,FILTER_VALIDATE_EMAIL)) {
+    $errors["email"]="El formato del correo electrónico es inválido,";
+  } elseif (!checkEmailExist($emailValidate)) {
+    $errors["email"]="Las credenciales no coinciden.";
+  } else {
     $theUser = getUserByEmail($emailValidate);
 
-    if ( password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
+    if ( !password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
       $errors["passwordRegister"]="Las credenciales no coinciden.";
     }
   }
@@ -183,6 +183,8 @@ function loginValidate(){
   }
   return $errors;
 }
+
+
 
 function getUserByEmail($email){
   $allUsers = getAllUsers();

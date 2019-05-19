@@ -37,7 +37,7 @@
 
       <section class="main-container-form">
         <h2>¿TENES UNA CUENTA?</h2>
-        <form class="container-form" action="profile.php" method="post">
+        <form class="container-form" method="post">
 
           <div class="email">
             <input
@@ -47,9 +47,9 @@
             value="<?= $email; ?>"
             placeholder="Correo electrónico"
             required>
-          </div>
-          <div class="invalid-feedback">
+            <div class="invalid-feedback">
             <?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?>
+            </div>
           </div>
 
           <div class="password">
@@ -58,9 +58,10 @@
             name="password"
             placeholder= "Contraseña"
             required>
-          </div>
-          <div class="invalid-feedback">
-            <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?>
+
+            <div class="invalid-feedback">
+              <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?>
+            </div>
           </div>
 
 
