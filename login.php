@@ -14,15 +14,24 @@
   $errorsInLogin= [];
 
   $email = "";
+  $userName = "";
 
   if ($_POST) {
 
     $email = trim($_POST['email']);
+    //$userName = trim($_POST['nickRegister']);
 
     $errorsInLogin = loginValidate();
 
     if (!$errorsInLogin) {
-      $userToLogin = getUserByEmail($email);
+
+        if (isMailOrIsNickname($email) == 'isMail'){
+            $userToLogin = getUserByEmail($email);
+        }else{
+            $userToLogin = getUserByUsername($email);
+        }
+
+
 
       if ( isset($_POST["rememberUser"]) ) {
         setcookie("userLoged",$email,time() + 3000);

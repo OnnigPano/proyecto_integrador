@@ -63,7 +63,7 @@
     <section class="profile-container">
 
         <h2 class="text-center">Bienvenid@ <?= $_SESSION['userLoged']['nicknameRegister'] ?>!</h2>
-        <h4 class="text-center">En ésta sección podrás ver y editar tus datos de cuenta</h3>
+        <h4 class="text-center">En ésta sección podrás ver y editar tus datos de cuenta</h4>
 
         <img src="data/avatars/<?= $_SESSION['userLoged']['avatarRegister'] ?>" class="profile-avatar img-thumbnail mx-auto d-block" alt="avatar usuario">
 

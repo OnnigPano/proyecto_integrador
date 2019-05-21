@@ -38,7 +38,9 @@ function registerValidate(){
 
    if (empty($nicknameRegister)) {
       $errors["nicknameRegister"] = "El campo usuario es OBLIGATORIO";
-    } //FALTA UN "ELSE" QUE VERIFIQUE QUE NO HAYA UN MISMO USUARIO EN LA BASE
+    }elseif(checkUserExist($nicknameRegister)){
+       $errors['nicknameRegister'] = "El nombre de usuario ya existe en nuestra base de datos";
+   }
 
    if (empty($emailRegister)) {
       $errors['emailRegister'] = 'El campo email es OBLIGATORIO';
@@ -146,6 +148,17 @@ function checkEmailExist($email){
   return false;
 }
 
+function checkUserExist($nickname){
+    $allUsers = getAllUsers();
+
+    foreach ($allUsers as $user){
+        if ($user['nicknameRegister'] == $nickname){
+            return true;
+        }
+    }
+    return false;
+}
+
 function login($user) {
   unset($user['password']);
 
@@ -165,24 +178,43 @@ function loginValidate(){
   $emailValidate = trim($_POST["email"]);
   $passwordValidate = trim($_POST["password"]);
 
-  if ( empty($emailValidate) ) {
-    $errors["email"]="El email es OBLIGATORIO,";
-  } elseif (!filter_var($emailValidate,FILTER_VALIDATE_EMAIL)) {
-    $errors["email"]="El formato del correo electrónico es inválido,";
-  } elseif (!checkEmailExist($emailValidate)) {
-    $errors["email"]="Las credenciales no coinciden.";
-  } else {
-    $theUser = getUserByEmail($emailValidate);
+  if (isMailOrIsNickname($emailValidate) == 'isMail'){
+      if ( empty($emailValidate) ) {
+          $errors["email"]="El campo de mail o usuario es OBLIGATORIO,";
+      } elseif (!filter_var($emailValidate,FILTER_VALIDATE_EMAIL)) {
+          $errors["email"]="El formato del correo electrónico es inválido,";
+      } elseif (!checkEmailExist($emailValidate)) {
+          $errors["email"]="Las credenciales no coinciden.";
+      } else {
+          $theUser = getUserByEmail($emailValidate);
 
-    if ( !password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
-      $errors["password"]="Las credenciales no coinciden.";
-    }
+          if ( !password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
+              $errors["password"]="Las credenciales no coinciden.";
+          }
+      }
+  }elseif (isMailOrIsNickname($emailValidate) == 'isNickname'){
+      if ( empty($emailValidate) ) {
+          $errors["email"]="El campo de mail o usuario es OBLIGATORIO,";
+      }elseif (!checkUserExist($emailValidate)){
+          $errors["email"]="Las credenciales no coinciden.";
+      }else{
+          $theUser = getUserByUsername($emailValidate);
+
+          if ( !password_verify($passwordValidate,$theUser["passwordRegister"]) ) {
+              $errors["password"]="Las credenciales no coinciden.";
+          }
+      }
   }
+
+
+
+
   if ( empty($passwordValidate) ) {
     $errors["passwordRegister"]="El campo password es OBLIGATORIO.";
   }
   return $errors;
 }
+
 
 
 
@@ -196,8 +228,25 @@ function getUserByEmail($email){
   }
 }
 
+function getUserByUsername($userName){
+    $allUsers = getAllUsers();
+
+    foreach ($allUsers as $user){
+        if ($user["nicknameRegister"] == $userName){
+            return $user;
+        }
+    }
+}
 
 
+function isMailOrIsNickname($fieldToValidate){
+
+    if (filter_var($fieldToValidate, FILTER_VALIDATE_EMAIL)){
+        return 'isMail';
+    }else{
+        return 'isNickname';
+    }
+}
 
 
 //FUNCION PARA DEBAGUEAR
