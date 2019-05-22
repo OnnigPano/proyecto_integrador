@@ -292,7 +292,7 @@ body {
 
 .profile-form input,
 .profile-form select,
-.profile-form .invalid-feedback {
+.invalid-feedback {
   font-size: 1.8em
 }
 

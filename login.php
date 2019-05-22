@@ -52,25 +52,22 @@
             <input
             type="text"
             name="email"
-            class="form-control <?= isset( $errorsInLogin['email'] ) ? "is-invalid" : null ?> "
+            class="form-control <?= isset( $errorsInLogin['login'] ) ? "is-invalid" : null ?> "
             value="<?= $email; ?>"
             placeholder="Correo electrónico o Usuario"
             required>
-            <div class="invalid-feedback">
-              <span><?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?> </span>
-            </div>
           </div>
 
           <div class="password">
             <input
             type="password"
             name="password"
-            class="form-control <?= isset( $errorsInLogin['password'] ) ? "is-invalid" : null ?> "
+            class="form-control <?= isset( $errorsInLogin['login'] ) ? "is-invalid" : null ?> "
             placeholder= "Contraseña"
             required>
 
             <div class="invalid-feedback">
-            <span>  <?= isset( $errorsInLogin['password'] ) ? $errorsInLogin['password'] : null ?> </span>
+            <span>  <?= isset( $errorsInLogin['login'] ) ? $errorsInLogin['login'] : null ?> </span>
             </div>
           </div>
 
