@@ -45,7 +45,7 @@
 ?>
 
       <section class="main-container-form">
-        <h2>¿TENES UNA CUENTA?</h2>
+        <h2>¿TENÉS UNA CUENTA?</h2>
         <form class="container-form" method="post">
 
           <div class="email">
@@ -54,7 +54,7 @@
             name="email"
             class="form-control <?= isset( $errorsInLogin['email'] ) ? "is-invalid" : null ?> "
             value="<?= $email; ?>"
-            placeholder="Correo electrónico"
+            placeholder="Correo electrónico o Usuario"
             required>
             <div class="invalid-feedback">
               <span><?= isset( $errorsInLogin['email'] ) ? $errorsInLogin['email'] : null ?> </span>
@@ -75,15 +75,13 @@
           </div>
 
 
-          <div class="">
-            <label for=""><input  type="checkbox" name="rememberUser">
-            Recordarme
-          </label>
-
+          <div class="chkRemember">
+            <label class="labelLogin" for="">Recordarme</label>
+              <input  class="chkInputRemember" type="checkbox" name="rememberUser">
           </div>
 
           <div class="">
-            <button class="button-form" type="submit" name="buttonLogin">Inicia sesión</button>
+            <button class="button-form" type="submit" name="buttonLogin">Iniciar sesión</button>
           </div>
 
           <a class="forgot-password" href="##">¿Has olvidado tu contraseña? </a>

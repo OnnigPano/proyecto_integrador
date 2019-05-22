@@ -136,21 +136,7 @@
             </div>
           </div>
 
-          <div class="boxRegistry">
-            <label for="">País</label>
-            <select class="custom-select form-control <?= isset( $errorsInRegister['countryRegister'] ) ? "is-invalid" : null ?> " name="countryRegister">
-              <option value="">Elegí un país</option>
-              <?php foreach ($countries as $code => $country): ?>
-                <option
-                  value="<?= $code ?>"
-                  <?= $code == $countryFromPost ? 'selected' : null ?>
-                > <?= $country ?> </option>
-              <?php endforeach; ?>
-            </select>
-            <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['countryRegister'] ) ? $errorsInRegister['countryRegister'] : null ?>
-            </div>
-          </div>
+
 
           <div class="boxRegistry">
             <label for="">Contraseña</label>
@@ -177,6 +163,22 @@
                 <?= isset( $errorsInRegister['repassword'] ) ? $errorsInRegister['repassword'] : null ?>
               </div>
           </div>
+
+            <div class="boxRegistry">
+                <label for="">País</label> <br><br>
+                <select class="custom-select form-control <?= isset( $errorsInRegister['countryRegister'] ) ? "is-invalid" : null ?> " name="countryRegister">
+                    <option value="">Elegí un país</option>
+                    <?php foreach ($countries as $code => $country): ?>
+                        <option
+                                value="<?= $code ?>"
+                            <?= $code == $countryFromPost ? 'selected' : null ?>
+                        > <?= $country ?> </option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="invalid-feedback">
+                    <?= isset( $errorsInRegister['countryRegister'] ) ? $errorsInRegister['countryRegister'] : null ?>
+                </div>
+            </div>
 
           <div class="boxRegistry">
             <label for="">Imagen</label>
