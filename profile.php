@@ -65,7 +65,20 @@
         <h2 class="text-center">Bienvenid@ <?= $_SESSION['userLoged']['nicknameRegister'] ?>!</h2>
         <h4 class="text-center">En ésta sección podrás ver y editar tus datos de cuenta</h4>
 
-        <img src="data/avatars/<?= $_SESSION['userLoged']['avatarRegister'] ?>" class="profile-avatar img-thumbnail mx-auto d-block" alt="avatar usuario">
+        <div class="img-thumbnail mt-4" style="background-image:url('data/avatars/<?=$_SESSION["userLoged"]["avatarRegister"] ?>');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                height: 200px;
+                max-width: 200px;
+                display: block;
+                margin: auto">
+        </div>
+
+        <!--<img src="data/avatars/<?/*= $_SESSION['userLoged']['avatarRegister'] */?>" class="profile-avatar img-thumbnail mx-auto d-block" alt="avatar usuario">-->
+
+
+
 
         <form class="text-right mt-4" method="get">
           <button class="btn btn-success mr-2" type="submit" name="edit-profile" value="true">EDITAR PERFIL</button>
@@ -188,7 +201,7 @@
               <label for="" class="col-form-label col-sm-2">Cambiar avatar</label>
               <div class="col-sm-6">
                 <input
-                class="avatarInput form-control-file-lg <?= isset( $errorsInProfile['avatarRegister'] ) ? "is-invalid" : null ?> "
+                class="avatarInput form-control-file <?= isset( $errorsInProfile['avatarRegister'] ) ? "is-invalid" : null ?> "
                 type="file"
                 name="avatarRegister"
                 >
