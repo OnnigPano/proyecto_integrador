@@ -54,10 +54,9 @@
       </nav>
 
       <div class="logo d-none d-lg-block">
-      <a href="index.php">
-        <h1>DIGITAL <span class="orange">STORE</span></h1>
-      </a>
-
+      
+        <h1><a href="index.php">DIGITAL <span class="orange">STORE</span></a></h1>
+      
       </div>
 
     </header>
