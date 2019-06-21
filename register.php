@@ -5,6 +5,11 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
+  require_once('classes/Validator.php');
+  require_once('classes/RegisterValidator.php');
+
+  $regvalidator = new RegisterValidator();
+
   if ( isLogged() ) {
     header('location: index.php');
     exit;
@@ -28,25 +33,10 @@
 	];
 
 
-  //Variables persistencia
-
-  $nameRegister = '';
-  $surnameRegister = '';
-  $nicknameRegister = '';
-  $emailRegister = '';
-  $countryFromPost = '';
-
-
-
 //PERSISTENCIA DEL FORMULARIO
   if ($_POST) {
 
-    $nameRegister= isset($_POST["nameRegister"]) ? trim($_POST["nameRegister"]) : " " ;
-    $surnameRegister= isset($_POST["surnameRegister"]) ? trim($_POST["surnameRegister"]) : " " ;
-    $nicknameRegister= isset($_POST["nicknameRegister"]) ? trim($_POST["nicknameRegister"]) : " " ;
-    $emailRegister= isset($_POST["emailRegister"]) ? trim($_POST["emailRegister"]) : " " ;
-    $countryFromPost = $_POST['countryRegister'];
-
+    $regvalidator->isValid();
 
     $errorsInRegister = registerValidate();
 
@@ -66,12 +56,7 @@
 
     }
 
-    //myDeBug($errorsInRegister);
-
   }
-
-
-
 
 ?>
 
@@ -88,12 +73,12 @@
             <label for="">Nombre</label>
             <input
               type="text"
-              class="form-control <?= isset( $errorsInRegister['nameRegister'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('name') ? "is-invalid" : null ?> "
               name="nameRegister"
-              value="<?= $nameRegister ?>"
+              value="<?= $regvalidator->getName() ?>"
             >
             <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['nameRegister'] ) ? $errorsInRegister['nameRegister'] : null ?>
+              <?= $regvalidator->hasError('name') ? $regvalidator->getError('name') : null ?>
             </div>
           </div>
 
@@ -101,12 +86,12 @@
             <label for="">Apellido</label>
             <input
               type="text"
-              class="form-control <?= isset( $errorsInRegister['surnameRegister'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('surname') ? "is-invalid" : null ?> "
               name="surnameRegister"
-              value="<?= $surnameRegister ?>"
+              value="<?= $regvalidator->getSurname() ?>"
             >
             <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['surnameRegister'] ) ? $errorsInRegister['surnameRegister'] : null ?>
+              <?= $regvalidator->hasError('surname') ? $regvalidator->getError('surname') : null ?>
             </div>
           </div>
 
@@ -114,12 +99,12 @@
             <label for="userName">Usuario</label>
             <input
               type="text"
-              class="form-control <?= isset( $errorsInRegister['nicknameRegister'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('nickname') ? "is-invalid" : null ?> "
               name="nicknameRegister"
-              value="<?= $nicknameRegister ?>"
+              value="<?= $regvalidator->getNickname() ?>"
               >
               <div class="invalid-feedback">
-                <?= isset( $errorsInRegister['nicknameRegister'] ) ? $errorsInRegister['nicknameRegister'] : null ?>
+                <?= $regvalidator->hasError('nickname') ? $regvalidator->getError('nickname') : null ?>
               </div>
           </div>
 
@@ -127,12 +112,12 @@
             <label for="">Correo electrónico</label>
             <input
               type="email"
-              class="form-control <?= isset( $errorsInRegister['emailRegister'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('email') ? "is-invalid" : null ?> "
               name="emailRegister"
-              value="<?= $emailRegister ?>"
+              value="<?= $regvalidator->getEmail() ?>"
             >
             <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['emailRegister'] ) ? $errorsInRegister['emailRegister'] : null ?>
+              <?= $regvalidator->hasError('email') ? $regvalidator->getError('email') : null ?>
             </div>
           </div>
 
@@ -142,12 +127,12 @@
             <label for="">Contraseña</label>
             <input
               type="password"
-              class="form-control <?= isset( $errorsInRegister['passwordRegister'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('password') ? "is-invalid" : null ?> "
               name="passwordRegister"
               value=""
             >
             <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['passwordRegister'] ) ? $errorsInRegister['passwordRegister'] : null ?>
+              <?= $regvalidator->hasError('password') ? $regvalidator->getError('password') : null ?>
             </div>
           </div>
 
@@ -155,41 +140,41 @@
             <label for="">Repetir contraseña</label>
             <input
               type="password"
-              class="form-control <?= isset( $errorsInRegister['repassword'] ) ? "is-invalid" : null ?> "
+              class="form-control <?= $regvalidator->hasError('repassword') ? "is-invalid" : null ?> "
               name="repassword"
               value=""
               >
               <div class="invalid-feedback">
-                <?= isset( $errorsInRegister['repassword'] ) ? $errorsInRegister['repassword'] : null ?>
+                <?= $regvalidator->hasError('repassword') ? $regvalidator->getError('repassword') : null ?>
               </div>
           </div>
 
             <div class="boxRegistry">
                 <label for="">País</label> <br><br>
-                <select class="custom-select form-control <?= isset( $errorsInRegister['countryRegister'] ) ? "is-invalid" : null ?> " name="countryRegister">
+                <select class="custom-select form-control <?= $regvalidator->hasError('country') ? "is-invalid" : null ?> " name="countryRegister">
                     <option value="">Elegí un país</option>
                     <?php foreach ($countries as $code => $country): ?>
                         <option
                                 value="<?= $code ?>"
-                            <?= $code == $countryFromPost ? 'selected' : null ?>
+                            <?= $code == $regvalidator->getCountry() ? 'selected' : null ?>
                         > <?= $country ?> </option>
                     <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">
-                    <?= isset( $errorsInRegister['countryRegister'] ) ? $errorsInRegister['countryRegister'] : null ?>
+                    <?= $regvalidator->hasError('country') ? $regvalidator->getError('country') : null ?>
                 </div>
             </div>
 
           <div class="boxRegistry">
             <label for="">Imagen</label>
             <input
-              class="avatarInput form-control <?= isset( $errorsInRegister['avatarRegister'] ) ? "is-invalid" : null ?> "
+              class="avatarInput form-control <?= $regvalidator->hasError('avatar') ? "is-invalid" : null ?> "
               type="file"
               name="avatarRegister"
               value=""
             >
             <div class="invalid-feedback">
-              <?= isset( $errorsInRegister['avatarRegister'] ) ? $errorsInRegister['avatarRegister'] : null ?>
+              <?= $regvalidator->hasError('avatar') ? $regvalidator->getError('avatar') : null ?>
             </div>
           </div>
 
@@ -200,8 +185,8 @@
         </form>
       </section>
 
-        <?php
+<?php
 
-          require_once('./partials/footer.php');
+  require_once('./partials/footer.php');
 
-        ?>
+?>

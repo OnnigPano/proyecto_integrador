@@ -1,6 +1,7 @@
 <?php
 
 
+
 session_start();
 
 define('ALLOWED_FORMAT_IMAGE', ['jpg','jpeg','png']);
