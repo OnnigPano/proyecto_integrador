@@ -34,18 +34,18 @@
             }
 
             if (empty($this->nickname)) {
-                $this->setError('nickname', "El campo usuario es OBLIGATORIO");
-            } /*elseif(checkUserExist($nicknameRegister)){
-                $errors['nicknameRegister'] = "El nombre de usuario ya existe en nuestra base de datos";
-            } */
+                $this->setError('nickname', 'El campo usuario es OBLIGATORIO');
+            } elseif(Db::checkUserExist($this->nickname)){
+                $this->setError('nickname', 'El nombre de usuario ya existe en nuestra base de datos' );
+            } 
 
             if (empty($this->email)) {
                 $this->setError('email', 'El campo email es OBLIGATORIO');
             } elseif (!filter_var(($this->email), FILTER_VALIDATE_EMAIL)) {
                 $this->setError('email', 'El formato de mail no es valido');
-            } /* elseif (checkEmailExist($emailRegister)) {
-                $errors['emailRegister'] = 'El mail ingresado ya existe en nuestra base de datos';
-            } */
+            }  elseif (Db::checkEmailExist($this->email)) {
+                $this->setError('email', 'El mail ingresado ya existe en nuestra base de datos');
+            } 
 
             if (empty($this->password)) {
                 $this->setError('password', "El campo password es OBLIGATORIO");;
@@ -77,7 +77,9 @@
                     $this->setError('avatar', 'Revise el formato de la imagen');
                 }
             }
+
        }
+
 
        /**
         * Get the value of name
@@ -85,18 +87,6 @@
        public function getName()
        {
               return $this->name;
-       }
-
-       /**
-        * Set the value of name
-        *
-        * 
-        */ 
-       public function setName($name)
-       {
-              $this->name = $name;
-
-              return $this;
        }
 
        /**
@@ -108,75 +98,11 @@
        }
 
        /**
-        * Set the value of surname
-        *
-        * 
-        */ 
-       public function setSurname($surname)
-       {
-              $this->surname = $surname;
-
-              return $this;
-       }
-
-       /**
         * Get the value of nickname
         */ 
        public function getNickname()
        {
               return $this->nickname;
-       }
-
-       /**
-        * Set the value of nickname
-        *
-        * 
-        */ 
-       public function setNickname($nickname)
-       {
-              $this->nickname = $nickname;
-
-              return $this;
-       }
-
-       /**
-        * Get the value of password
-        */ 
-       public function getPassword()
-       {
-              return $this->password;
-       }
-
-       /**
-        * Set the value of password
-        *
-        * 
-        */ 
-       public function setPassword($password)
-       {
-              $this->password = $password;
-
-              return $this;
-       }
-
-       /**
-        * Get the value of repassword
-        */ 
-       public function getRepassword()
-       {
-              return $this->repassword;
-       }
-
-       /**
-        * Set the value of repassword
-        *
-        * 
-        */ 
-       public function setRepassword($repassword)
-       {
-              $this->repassword = $repassword;
-
-              return $this;
        }
 
        /**
@@ -188,18 +114,6 @@
        }
 
        /**
-        * Set the value of email
-        *
-        * 
-        */ 
-       public function setEmail($email)
-       {
-              $this->email = $email;
-
-              return $this;
-       }
-
-       /**
         * Get the value of country
         */ 
        public function getCountry()
@@ -207,36 +121,5 @@
               return $this->country;
        }
 
-       /**
-        * Set the value of country
-        *
-        * 
-        */ 
-       public function setCountry($country)
-       {
-              $this->country = $country;
-
-              return $this;
-       }
-
-       /**
-        * Get the value of avatar
-        */ 
-       public function getAvatar()
-       {
-              return $this->avatar;
-       }
-
-       /**
-        * Set the value of avatar
-        *
-        * 
-        */ 
-       public function setAvatar($avatar)
-       {
-              $this->avatar = $avatar;
-
-              return $this;
-       }
-    }
-    
+      
+     }
