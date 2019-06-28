@@ -5,7 +5,7 @@
   require_once('./partials/header.php');
   require_once('register-controller.php');
 
-  require_once('classes/Db.php');
+  require_once('classes/DB.php');
   require_once('classes/Validator.php');
   require_once('classes/RegisterValidator.php');
 
@@ -46,20 +46,25 @@
 
     if (!$errorsInRegister) {
 
-      $db = new Db();
-      $imgName = $db->saveImage();
+      $database = new DB();
+      //$imgName = $db->saveImage();
 
-      $_POST['avatarRegister'] = $imgName;
-      $_POST['id'] = generateId();
+      //$_POST['avatarRegister'] = $imgName;
+      //$_POST['id'] = generateId();
 
 
-      $thisUser = $db->saveUser();
+      $thisUser = $database->saveUser();//guarda usuario JSON
+      $database->insertUser();//guarda usuario MySQL
 
       setcookie( 'userLoged', $thisUser['email'], time() + 3600000 );
 
+      //cookie OOP
+      setcookie( 'userLoged', $database->getEmail(), time() + 3600000 );
+
+
       login($thisUser);
 
-    }
+    } 
 
   }
 

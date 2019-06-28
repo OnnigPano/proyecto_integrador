@@ -35,7 +35,7 @@
 
             if (empty($this->nickname)) {
                 $this->setError('nickname', 'El campo usuario es OBLIGATORIO');
-            } elseif(Db::checkUserExist($this->nickname)){
+            } elseif(DB::checkUserExist($this->nickname)){
                 $this->setError('nickname', 'El nombre de usuario ya existe en nuestra base de datos' );
             } 
 
@@ -43,7 +43,7 @@
                 $this->setError('email', 'El campo email es OBLIGATORIO');
             } elseif (!filter_var(($this->email), FILTER_VALIDATE_EMAIL)) {
                 $this->setError('email', 'El formato de mail no es valido');
-            }  elseif (Db::checkEmailExist($this->email)) {
+            }  elseif (DB::checkEmailExist($this->email)) {
                 $this->setError('email', 'El mail ingresado ya existe en nuestra base de datos');
             } 
 
