@@ -135,7 +135,7 @@
 
         public function insertUser()
         {
-            require_once('conexion.php');
+            global $db;
             try {
 
                 $sql = "INSERT INTO users(name, surname, nickname, email, country, password, avatar, registration_date) 

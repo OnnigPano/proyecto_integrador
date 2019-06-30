@@ -12,32 +12,31 @@
     header('location: profile.php');
     exit;
   }
-
+  //Instanciamos el Validador del Login
   $loginValidator = new LoginValidator();
 
   if ($_POST) {
-    
+    //Almacenamos el campo de usuario o mail.
+    $userField = $loginValidator->getUserField();
+    //Seteamos los errores si existen
     $loginValidator->isValid();
-    
+    //Almacenamos los errores si existen
     $errorsInLogin = $loginValidator->getAllErrors();
-
   
 
     if (!$errorsInLogin) {
-
-        if ($loginValidator->isMailOrIsNickname($loginValidator->getUserField()) == 'isMail'){
-            $userToLogin = DB::getUserByEmail($email);
+        //Validamos si se quiere logear por mail o nickname
+        if ($loginValidator->isMailOrIsNickname($userField) == 'isMail'){
+            $userToLogin = DB::getUserByEmail($userField);
         }else{
-            $userToLogin = DB::getUserByUsername($email);
+            $userToLogin = DB::getUserByUsername($userField);
         }
-
-
-
-      if ( isset($_POST["rememberUser"]) ) {
-        setcookie("userLoged", $userToLogin['email'],time() + 3000);
-      }
-
-      LoginValidator::login($userToLogin);
+        //Si quiere mantener la session, generamos una cookie
+        if ( isset($_POST["rememberUser"]) ) {
+          setcookie("userLoged", $userToLogin['email'],time() + 3000);
+        }
+        //Logeamos al usuario que ingresa al sitio.
+        LoginValidator::login($userToLogin);
     }
   }
 

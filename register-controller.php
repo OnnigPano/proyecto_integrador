@@ -157,7 +157,7 @@ function checkUserExist($nickname){
 
 
 
-
+/*
 
 function loginValidate(){
   $errors=[];
@@ -198,7 +198,7 @@ function loginValidate(){
   }
   return $errors;
 }
-
+*/
 
 
 
@@ -225,7 +225,7 @@ function getUserByUsername($userName){
 
 
 
-
+/*
 //FUNCION PARA DEBAGUEAR
 function myDeBug($data){
     echo "<pre>";
@@ -233,5 +233,5 @@ function myDeBug($data){
 		echo "</pre>";
 		exit;
 }
-
+*/
 ?>

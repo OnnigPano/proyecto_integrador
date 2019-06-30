@@ -13,6 +13,7 @@
 
        public function __construct()
        {
+            parent::__construct();
             $this->name = isset($_POST['nameRegister']) ?  trim($_POST['nameRegister']) : null;
             $this->surname = isset($_POST['surnameRegister']) ? trim($_POST['surnameRegister']) : null;
             $this->nickname = isset($_POST['nicknameRegister']) ? trim($_POST['nicknameRegister']) : null;

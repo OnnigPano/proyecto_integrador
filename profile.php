@@ -5,20 +5,15 @@
   require_once('./partials/header.php');
 
   require_once('autoload.php');
-
-  session_start();
   
   require_once'edit-profile-controller.php';
 
   
-
-  if ( LoginValidator::isLogged() ) {
+  if ( !LoginValidator::isLogged() ) {
     header('location: login.php');
     exit;
   }
-
-
-  //myDeBug($_SESSION);
+  
   $errorsInProfile = [];
 
   // Array de países para el select
@@ -70,10 +65,10 @@
 
     <section class="profile-container">
 
-        <h2 class="text-center">Bienvenid@ <?= $_SESSION['userLoged']->getName() ?>!</h2>
+        <h2 class="text-center">Bienvenid@ <?= $_SESSION['userLoged']['name'] ?>!</h2>
         <h4 class="text-center">En ésta sección podrás ver y editar tus datos de cuenta</h4>
 
-        <div class="img-thumbnail mt-4" style="background-image:url('data/avatars/<?=$_SESSION["userLoged"]->getAvatarUrl() ?>');
+        <div class="img-thumbnail mt-4" style="background-image:url('data/avatars/<?=$_SESSION["userLoged"]['avatar'] ?>');
                 background-repeat: no-repeat;
                 background-size: cover;
                 background-position: center center;
@@ -82,11 +77,6 @@
                 display: block;
                 margin: auto">
         </div>
-
-        <!--<img src="data/avatars/<?/*= $_SESSION['userLoged']['avatarRegister'] */?>" class="profile-avatar img-thumbnail mx-auto d-block" alt="avatar usuario">-->
-
-
-
 
         <form class="text-right mt-4" method="get">
           <button class="btn btn-success mr-2" type="submit" name="edit-profile" value="true">EDITAR PERFIL</button>
@@ -103,7 +93,7 @@
                 type="text"
                 class="form-control text-capitalize <?= isset( $errorsInProfile['nicknameRegister'] ) ? "is-invalid" : null ?> "
                 name="nicknameRegister"
-                value="<?= $_SESSION['userLoged']->getNickname()?>" <?= $disableForm ?>
+                value="<?= $_SESSION['userLoged']['nickname']?>" <?= $disableForm ?>
                 >
                 <div class="invalid-feedback">
                   <?= isset( $errorsInProfile['nicknameRegister'] ) ? $errorsInProfile['nicknameRegister'] : null ?>
@@ -118,7 +108,7 @@
                 type="text"
                 class="form-control text-capitalize <?= isset( $errorsInProfile['nameRegister'] ) ? "is-invalid" : null ?> "
                 name="nameRegister"
-                value="<?= $_SESSION['userLoged']->getName(); ?>"
+                value="<?= $_SESSION['userLoged']['name']; ?>"
                 >
                 <div class="invalid-feedback">
                   <?= isset( $errorsInProfile['nameRegister'] ) ? $errorsInProfile['nameRegister'] : null ?>
@@ -133,7 +123,7 @@
                 type="text"
                 class="form-control text-capitalize <?= isset( $errorsInProfile['surnameRegister'] ) ? "is-invalid" : null ?> "
                 name="surnameRegister"
-                value="<?= $_SESSION['userLoged']->getSurname() ?>"
+                value="<?= $_SESSION['userLoged']['surname'] ?>"
                 >
                 <div class="invalid-feedback">
                   <?= isset( $errorsInProfile['surnameRegister'] ) ? $errorsInProfile['surnameRegister'] : null ?>
@@ -148,7 +138,7 @@
                 type="email"
                 class="form-control <?= isset( $errorsInProfile['emailRegister'] ) ? "is-invalid" : null ?> "
                 name="emailRegister"
-                value="<?= $_SESSION['userLoged']->getEmail() ?>"
+                value="<?= $_SESSION['userLoged']['name'] ?>"
                 >
                 <div class="invalid-feedback">
                   <?= isset( $errorsInProfile['emailRegister'] ) ? $errorsInProfile['emailRegister'] : null ?>
@@ -164,7 +154,7 @@
                   <?php foreach ($countries as $code => $country): ?>
                     <option
                     value="<?= $code ?>"
-                    <?= $code == $_SESSION['userLoged']->getCountry() ? 'selected' : null ?>
+                    <?= $code == $_SESSION['userLoged']['country'] ? 'selected' : null ?>
                     > <?= $country ?> </option>
                   <?php endforeach; ?>
                 </select>

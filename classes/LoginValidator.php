@@ -7,6 +7,7 @@
 
         public function __construct()
         {
+            parent::__construct();
             $this->userField = isset($_POST['email']) ? trim($_POST['email']) : null;
             $this->password = isset($_POST['password']) ? trim($_POST['password']) : null;
         }
