@@ -1,6 +1,6 @@
 <?php
 
-  require_once('register-controller.php');
+  require_once('autoload.php');
 
 
 ?>
@@ -32,7 +32,7 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Carrito<i class="fas fa-shopping-cart ml-1"></i></a>
               <!-- Menú dinámico para usuario registrado -->
-              <?php if ( !isLogged() ): ?>
+              <?php if ( !LoginValidator::isLogged() ): ?>
                   <li class="nav-item active">
                     <a class="nav-link" href="login.php">Iniciar Sesión</a>
                   </li>

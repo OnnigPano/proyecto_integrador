@@ -2,11 +2,6 @@
 
 
 
-session_start();
-
-define('ALLOWED_FORMAT_IMAGE', ['jpg','jpeg','png']);
-define('IMAGE_FILE_PATH', dirname(__FILE__) . '/data/avatars/');
-define('JSON_USERS_PATH', dirname(__FILE__) . '/data/users.json');
 
 
 if ( isset($_COOKIE["userLoged"]) && !isLogged() ) {
@@ -15,7 +10,7 @@ if ( isset($_COOKIE["userLoged"]) && !isLogged() ) {
   $_SESSION["userLoged"] = $theUser;
 }
 
-function registerValidate(){
+/*function registerValidate(){
 
    $errors = [];
 
@@ -158,20 +153,11 @@ function checkUserExist($nickname){
         }
     }
     return false;
-}
+}*/
 
-function login($user) {
-  unset($user['password']);
 
-  $_SESSION['userLoged'] = $user;
 
-  header('location: profile.php');
-  exit;
-}
 
-function isLogged() {
-  return isset($_SESSION['userLoged']);
-}
 
 function loginValidate(){
   $errors=[];
@@ -207,9 +193,6 @@ function loginValidate(){
       }
   }
 
-
-
-
   if ( empty($passwordValidate) ) {
     $errors["passwordRegister"]="El campo password es OBLIGATORIO.";
   }
@@ -219,7 +202,7 @@ function loginValidate(){
 
 
 
-function getUserByEmail($email){
+/*function getUserByEmail($email){
   $allUsers = getAllUsers();
 
   foreach ($allUsers as $oneUser) {
@@ -237,17 +220,10 @@ function getUserByUsername($userName){
             return $user;
         }
     }
-}
+}*/
 
 
-function isMailOrIsNickname($fieldToValidate){
 
-    if (filter_var($fieldToValidate, FILTER_VALIDATE_EMAIL)){
-        return 'isMail';
-    }else{
-        return 'isNickname';
-    }
-}
 
 
 //FUNCION PARA DEBAGUEAR

@@ -3,41 +3,41 @@
   $title = 'Iniciar Sesión - DS';
   require_once './partials/head.php';
   require_once './partials/header.php';
-  require_once 'register-controller.php';
+  require_once('conexion.php');
+
+  require_once('autoload.php');
 
 
-  if ( isLogged() ) {
-   header('location: profile.php');
+  if ( LoginValidator::isLogged() ) {
+    header('location: profile.php');
     exit;
   }
 
-  $errorsInLogin= [];
-
-  $email = "";
-  $userName = "";
+  $loginValidator = new LoginValidator();
 
   if ($_POST) {
+    
+    $loginValidator->isValid();
+    
+    $errorsInLogin = $loginValidator->getAllErrors();
 
-    $email = trim($_POST['email']);
-    //$userName = trim($_POST['nickRegister']);
-
-    $errorsInLogin = loginValidate();
+  
 
     if (!$errorsInLogin) {
 
-        if (isMailOrIsNickname($email) == 'isMail'){
-            $userToLogin = getUserByEmail($email);
+        if ($loginValidator->isMailOrIsNickname($loginValidator->getUserField()) == 'isMail'){
+            $userToLogin = DB::getUserByEmail($email);
         }else{
-            $userToLogin = getUserByUsername($email);
+            $userToLogin = DB::getUserByUsername($email);
         }
 
 
 
       if ( isset($_POST["rememberUser"]) ) {
-        setcookie("userLoged",$email,time() + 3000);
+        setcookie("userLoged", $userToLogin['email'],time() + 3000);
       }
 
-      login($userToLogin);
+      LoginValidator::login($userToLogin);
     }
   }
 
@@ -53,7 +53,7 @@
             type="text"
             name="email"
             class="form-control <?= isset( $errorsInLogin['login'] ) ? "is-invalid" : null ?> "
-            value="<?= $email; ?>"
+            value="<?= $loginValidator->getUserField() ?>"
             placeholder="Correo electrónico o Usuario"
             required>
           </div>

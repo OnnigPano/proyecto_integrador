@@ -3,22 +3,19 @@
   $title= 'Registrate! - DS';
   require_once('./partials/head.php');
   require_once('./partials/header.php');
-  require_once('register-controller.php');
-
-  require_once('classes/DB.php');
-  require_once('classes/Validator.php');
-  require_once('classes/RegisterValidator.php');
+  
+  require_once('autoload.php');
 
   
-  if ( isLogged() ) {
+
+  session_start();
+  
+  if ( LoginValidator::isLogged() ) {
     header('location: index.php');
     exit;
   }
 
   $regValidator = new RegisterValidator();
-  
-
-  //$errorsInRegister = [];
 
   // Array de países para el select
 
@@ -38,6 +35,8 @@
 
   if ($_POST) {
 
+    
+
     $regValidator->isValid();
 
     $errorsInRegister = $regValidator->getAllErrors();
@@ -46,23 +45,27 @@
 
     if (!$errorsInRegister) {
 
+      //No hay errores, entonces instanciamos el controlador de la BD
       $database = new DB();
-      //$imgName = $db->saveImage();
 
-      //$_POST['avatarRegister'] = $imgName;
-      //$_POST['id'] = generateId();
-
-
-      $thisUser = $database->saveUser();//guarda usuario JSON
-      $database->insertUser();//guarda usuario MySQL
-
-      setcookie( 'userLoged', $thisUser['email'], time() + 3600000 );
+      //Hasheamos el password
+      $database->passwordHash();
+      //Guardamos el avatar en la carpeta data.
+      $avatarDir = $database->saveImage();
+      //Seteamos la URL del avatar.
+      $database->setAvatarUrl($avatarDir);
+      //Guardamos al usuario en la base de datos y obtenemos su ID.
+      $userID = $database->insertUser();
+      //Seteamos el ID en DB
+      $database->setId($userID);
+      //Eliminamos valores de Avatar y password.
+      $database->unsetValues();
 
       //cookie OOP
       setcookie( 'userLoged', $database->getEmail(), time() + 3600000 );
 
-
-      login($thisUser);
+      //Logeamos al Objeto.
+      LoginValidator::login($database);
 
     } 
 
