@@ -3,8 +3,6 @@
   $title = 'Iniciar Sesión - DS';
   require_once './partials/head.php';
   require_once './partials/header.php';
-  require_once('conexion.php');
-
   require_once('autoload.php');
 
 

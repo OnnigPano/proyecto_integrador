@@ -3,11 +3,12 @@
   $title= 'Registrate! - DS';
   require_once('./partials/head.php');
   require_once('./partials/header.php');
-  require_once('conexion.php');
-  
   require_once('autoload.php');
 
-  
+  //Si existe cookie, logueamos al usuario.
+  LoginValidator::loginWithCookie();
+
+  //Si ya está logueado, redirige.
   if ( LoginValidator::isLogged() ) {
     header('location: index.php');
     exit;

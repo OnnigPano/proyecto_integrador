@@ -72,6 +72,16 @@
             }
         }
 
+        static public function loginWithCookie()
+        {
+            if ( isset($_COOKIE["userLoged"]) && !LoginValidator::isLogged() ) {
+                $theUser = DB::getUserByEmail($_COOKIE["userLoged"]);
+              
+                $_SESSION["userLoged"] = $theUser;
+              }
+              
+        }
+
         /**
          * Set the value of userField
          *

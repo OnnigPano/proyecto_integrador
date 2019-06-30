@@ -1,7 +1,11 @@
 <?php
 
   require_once('autoload.php');
+  require_once('conexion.php');
   session_start();
+
+  //Si existe cookie, logueamos al usuario.
+  LoginValidator::loginWithCookie();
 
 ?>
 

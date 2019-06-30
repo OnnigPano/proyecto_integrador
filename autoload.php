@@ -8,3 +8,4 @@
     require_once('classes/Validator.php');
     require_once('classes/RegisterValidator.php');
     require_once('classes/LoginValidator.php');
+    require_once('classes/EditValidator.php');

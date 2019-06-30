@@ -3,19 +3,13 @@
   $title = 'Mi Cuenta - DS';
   require_once('./partials/head.php');
   require_once('./partials/header.php');
-
   require_once('autoload.php');
-  
-  require_once'edit-profile-controller.php';
 
-  
+  //Si no está loggeado, redirige.
   if ( !LoginValidator::isLogged() ) {
     header('location: login.php');
     exit;
   }
-  
-  $errorsInProfile = [];
-
   // Array de países para el select
 
   $countries = [
@@ -30,23 +24,45 @@
 		'uy' => 'Uruguay',
 		've' => 'Venezuela',
 	];
-   //myDeBug($_SESSION);
-
 
   if ($_POST) {
-    //myDeBug($_FILES);
+
+    $editValidator = new EditValidator();
+    
 
     if ( $_POST['buttonRegister'] == 1 ) {
 
-      $errorsInProfile = profileValidate();
+      
+      //Validamos el edit y seteamos los errores si existen.
+      $editValidator->isValid();
+      //Traemos los errores si existen
+      $errorsInProfile = $editValidator->getAllErrors();
 
       if (!$errorsInProfile) {
+        //User ID
+        $id = $_SESSION['userLoged']['id'];
+        //instanciamos controlador del DB
+        $database = new DB();
+        //seteamos la Url que viene desde la Session
+        $editValidator->setAvatarUrl();
+        //Almacenamos nuevo url si cambió el avatar
+        if ( $_FILES['avatarRegister']['name'] != "" ) {
+          $url = $database->saveImage();
+          $editValidator->setNewAvatarUrl($url);
+        }
+        //Seteamos nueva password si la cambió
+        $editValidator->setPassword();
+        
+        //Editamos la información del usuario en la BD
+        $database->updateUser($editValidator->getName(), $editValidator->getSurname(), $editValidator->getNickname(), 
+                  $editValidator->getEmail(), $editValidator->getCountry(), $editValidator->getPassword(), 
+                  $editValidator->getAvatarUrl(), $id);
+        //Traemos al usuario con sus nuevos datos y lo logueamos
+        $thisUser = DB::getUserByID($id);
 
-        $thisUser = saveUserEdited();
+        setcookie( 'userLoged', $editValidator->getEmail(), time() + 3600000 );
 
-        setcookie( 'userLoged', $_SESSION['userLoged']['emailRegister'], time() + 3600000 );
-
-        login($thisUser);
+        LoginValidator::login($thisUser);
 
       }
     }
@@ -91,12 +107,12 @@
               <div class="col-sm-6">
                 <input
                 type="text"
-                class="form-control text-capitalize <?= isset( $errorsInProfile['nicknameRegister'] ) ? "is-invalid" : null ?> "
+                class="form-control text-capitalize <?= isset( $errorsInProfile['nickname'] ) ? "is-invalid" : null ?> "
                 name="nicknameRegister"
                 value="<?= $_SESSION['userLoged']['nickname']?>" <?= $disableForm ?>
                 >
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['nicknameRegister'] ) ? $errorsInProfile['nicknameRegister'] : null ?>
+                  <?= isset( $errorsInProfile['nickname'] ) ? $errorsInProfile['nickname'] : null ?>
                 </div>
               </div>
             </div>
@@ -106,12 +122,12 @@
               <div class="col-sm-6">
                 <input
                 type="text"
-                class="form-control text-capitalize <?= isset( $errorsInProfile['nameRegister'] ) ? "is-invalid" : null ?> "
+                class="form-control text-capitalize <?= isset( $errorsInProfile['name'] ) ? "is-invalid" : null ?> "
                 name="nameRegister"
                 value="<?= $_SESSION['userLoged']['name']; ?>"
                 >
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['nameRegister'] ) ? $errorsInProfile['nameRegister'] : null ?>
+                  <?= isset( $errorsInProfile['name'] ) ? $errorsInProfile['name'] : null ?>
                 </div>
               </div>
             </div>
@@ -121,12 +137,12 @@
               <div class="col-sm-6">
                 <input
                 type="text"
-                class="form-control text-capitalize <?= isset( $errorsInProfile['surnameRegister'] ) ? "is-invalid" : null ?> "
+                class="form-control text-capitalize <?= isset( $errorsInProfile['surname'] ) ? "is-invalid" : null ?> "
                 name="surnameRegister"
                 value="<?= $_SESSION['userLoged']['surname'] ?>"
                 >
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['surnameRegister'] ) ? $errorsInProfile['surnameRegister'] : null ?>
+                  <?= isset( $errorsInProfile['surname'] ) ? $errorsInProfile['surname'] : null ?>
                 </div>
               </div>
             </div>
@@ -136,12 +152,12 @@
               <div class="col-sm-6">
                 <input
                 type="email"
-                class="form-control <?= isset( $errorsInProfile['emailRegister'] ) ? "is-invalid" : null ?> "
+                class="form-control <?= isset( $errorsInProfile['email'] ) ? "is-invalid" : null ?> "
                 name="emailRegister"
-                value="<?= $_SESSION['userLoged']['name'] ?>"
+                value="<?= $_SESSION['userLoged']['email'] ?>"
                 >
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['emailRegister'] ) ? $errorsInProfile['emailRegister'] : null ?>
+                  <?= isset( $errorsInProfile['email'] ) ? $errorsInProfile['email'] : null ?>
                 </div>
               </div>
             </div>
@@ -149,7 +165,7 @@
             <div class="form-group row">
               <label for="" class="col-form-label col-sm-2">País</label>
               <div class="col-sm-6">
-                <select class="custom-select form-control-lg <?= isset( $errorsInProfile['countryRegister'] ) ? "is-invalid" : null ?> " name="countryRegister">
+                <select class="custom-select form-control-lg <?= isset( $errorsInProfile['country'] ) ? "is-invalid" : null ?> " name="countryRegister">
                   <option value="">Elegí un país</option>
                   <?php foreach ($countries as $code => $country): ?>
                     <option
@@ -159,7 +175,7 @@
                   <?php endforeach; ?>
                 </select>
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['countryRegister'] ) ? $errorsInProfile['countryRegister'] : null ?>
+                  <?= isset( $errorsInProfile['country'] ) ? $errorsInProfile['country'] : null ?>
                 </div>
               </div>
             </div>
@@ -169,13 +185,13 @@
               <div class="col-sm-6">
                 <input
                 type="password"
-                class="form-control <?= isset( $errorsInProfile['passwordRegister'] ) ? "is-invalid" : null ?> "
+                class="form-control <?= isset( $errorsInProfile['password'] ) ? "is-invalid" : null ?> "
                 name="passwordRegister"
                 value=""
                 >
                 <span class="form-text">Debe contener más de 5 caracteres e incluir "DH". No utilices espacios. </span>
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['passwordRegister'] ) ? $errorsInProfile['passwordRegister'] : null ?>
+                  <?= isset( $errorsInProfile['password'] ) ? $errorsInProfile['password'] : null ?>
                 </div>
               </div>
             </div>
@@ -199,12 +215,12 @@
               <label for="" class="col-form-label col-sm-2">Cambiar avatar</label>
               <div class="col-sm-6">
                 <input
-                class="avatarInput form-control-file <?= isset( $errorsInProfile['avatarRegister'] ) ? "is-invalid" : null ?> "
+                class="avatarInput form-control-file <?= isset( $errorsInProfile['avatar'] ) ? "is-invalid" : null ?> "
                 type="file"
                 name="avatarRegister"
                 >
                 <div class="invalid-feedback">
-                  <?= isset( $errorsInProfile['avatarRegister'] ) ? $errorsInProfile['avatarRegister'] : null ?>
+                  <?= isset( $errorsInProfile['avatar'] ) ? $errorsInProfile['avatar'] : null ?>
                 </div>
               </div>
             </div>

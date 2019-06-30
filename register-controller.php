@@ -4,11 +4,6 @@
 
 
 
-if ( isset($_COOKIE["userLoged"]) && !isLogged() ) {
-  $theUser = getUserByEmail($_COOKIE["userLoged"]);
-
-  $_SESSION["userLoged"] = $theUser;
-}
 
 /*function registerValidate(){
 

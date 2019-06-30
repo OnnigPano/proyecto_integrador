@@ -165,7 +165,7 @@
             
         }
 
-        public function getUserByID($id)
+        static public function getUserByID($id)
         {
             global $db;
 
@@ -298,6 +298,31 @@
                 die('Error buscando usuario por nickname');
             }
             
+        }
+
+        public function updateUser($name, $surname, $nickname, $email, $country, $password, $avatar, $id)
+        {       
+            global $db;
+
+            try {
+                $sql = "UPDATE users SET name = :name, surname = :surname, nickname = :nickname, email = :email,
+                        country = :country, password = :password, avatar = :avatar WHERE id = :id";
+                $stmt = $db->prepare($sql);
+                $stmt->bindValue(':name', $name);
+                $stmt->bindValue(':surname', $surname);
+                $stmt->bindValue(':nickname', $nickname);
+                $stmt->bindValue(':email', $email);
+                $stmt->bindValue(':country', $country);
+                $stmt->bindValue(':password', $password);
+                $stmt->bindValue(':avatar', $avatar);
+                $stmt->bindValue(':id', $id);
+
+                $stmt->execute();
+
+            } catch (\PDOException $e) {
+                echo $e;
+                die('Error editando usuario en la BD');
+            }
         }
 
 
