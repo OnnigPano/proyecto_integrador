@@ -1,8 +1,8 @@
 <?php
 
     $dsn = 'mysql:host=localhost;dbname=digital_store;port=3306';
-    $db_user= 'root';
-    $db_pass = '';
+    $db_user= 'phpmyadmin';
+    $db_pass = 'kimbalache1';
     $opt = [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
 
 

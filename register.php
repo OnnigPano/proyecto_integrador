@@ -17,8 +17,11 @@
   //Instanciamos el Validador para el registro.
   $regValidator = new RegisterValidator();
 
-  // Array de países para el select
+  //METODOS PARA CARGAR LOS USUARIOS DEL JSON AL DB------------------------------------------------------
+  //$usersFromJson = DB::getUsersFromJson();
+  //DB::saveUsersFromJson($usersFromJson);
 
+  // Array de países para el select
   $countries = [
 		'ar' => 'Argentina',
 		'bo' => 'Bolivia',

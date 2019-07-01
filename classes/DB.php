@@ -124,12 +124,6 @@
             $this->password = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
         }
 
-        public function unsetValues()
-        {
-            unset($this->avatar);
-            unset($this->password);
-        }
-
         //METODOS MySQL
 
 
@@ -164,6 +158,25 @@
             }
             
         }
+        /*static public function getAllUsers()
+        {
+            global $db;
+
+            try {
+                $sql = "SELECT * FROM users";
+
+                $query = $db->query($sql);
+                $query->execute();
+
+                $allUsersDB = $query->fetch(PDO::FETCH_ASSOC);
+
+                return $allUsersDB;
+
+            } catch (PDOException $e) {
+                die('Error buscando usuario por ID');
+            }
+            
+        }*/
 
         static public function getUserByID($id)
         {
@@ -322,6 +335,42 @@
             } catch (\PDOException $e) {
                 echo $e;
                 die('Error editando usuario en la BD');
+            }
+        }
+
+        static public function getUsersFromJson()
+        {
+            $fileContent = file_get_contents(JSON_USERS_PATH);
+            $allUsersJson = json_decode($fileContent, true);
+            return $allUsersJson;
+
+        }
+
+        static public function saveUsersFromJson($jsonUsers)
+        {   
+            global $db;
+            foreach ($jsonUsers as $oneUser) {
+                    try {
+
+                        $sql = "INSERT INTO users(name, surname, nickname, email, country, password, avatar, registration_date) 
+                                VALUES (:name, :surname, :nickname, :email, :country, :password, :avatar, NOW() )";
+                        
+        
+                        $stmt = $db->prepare($sql);
+                        $stmt->bindValue(':name', $oneUser['nameRegister']);
+                        $stmt->bindValue(':surname', $oneUser['surnameRegister']);
+                        $stmt->bindValue(':nickname', $oneUser['nicknameRegister']);
+                        $stmt->bindValue(':email', $oneUser['emailRegister']);
+                        $stmt->bindValue(':country', $oneUser['countryRegister']);
+                        $stmt->bindValue(':password', $oneUser['passwordRegister']);
+                        $stmt->bindValue(':avatar', $oneUser['avatarRegister']);
+        
+                        $stmt->execute();        
+                        
+                    } catch (\PDOException $e) {
+                        var_dump($e->getMessage());
+                        exit;
+                    }
             }
         }
 
