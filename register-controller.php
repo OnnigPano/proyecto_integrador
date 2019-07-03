@@ -1,5 +1,7 @@
 <?php
 
+require "conexion.php";
+
 
 session_start();
 
@@ -95,6 +97,7 @@ function saveImg(){
   return $finalName;
 }
 
+
 function saveUser(){
 
   $_POST['nameRegister'] = trim($_POST['nameRegister']);
@@ -115,6 +118,44 @@ function saveUser(){
 
   return $userToSave;
 
+}
+
+function saveUserSQL(){
+
+//$base = $this->base;
+
+global $base;
+
+
+  $_POST['nameRegister'] = trim($_POST['nameRegister']);
+  $_POST['surnameRegister'] = trim($_POST['surnameRegister']);
+  $_POST['nicknameRegister'] = trim($_POST['nicknameRegister']);
+  $_POST['emailRegister'] = trim($_POST['emailRegister']);
+  $_POST['countryRegister'] = $_POST['countryRegister'];
+  $_POST['passwordRegister'] = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
+
+  $nameRegister = $_POST['nameRegister'];
+  $surnameRegister = $_POST['surnameRegister'];
+  $nicknameRegister =$_POST['nicknameRegister'];
+  $emailRegister = $_POST['emailRegister'] ;
+  $countryRegister = $_POST['countryRegister'];
+  $passwordRegister = $_POST['passwordRegister'];
+  $avatar = $_POST['avatarRegister'];
+
+
+  unset($_POST['repassword']);
+  unset($_POST['buttonRegister']);
+
+  $userToSave = $_POST;
+
+  try{
+    $consulta = $base->prepare("INSERT INTO users (name, surname, nickname, email,country,password, avatar) values(?, ?, ?, ?, ?, ?, ?)");
+    $consulta->execute([$nameRegister, $surnameRegister, $nicknameRegister, $emailRegister, $countryRegister, $passwordRegister, $avatar]);
+  }catch(PDOException $error){
+    echo("Ocurrió un error al crear el nuevo usuario");
+	  die();
+  }
+  return $userToSave;
 }
 
 function getAllUsers(){

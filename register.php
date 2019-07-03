@@ -58,7 +58,7 @@
       $_POST['id'] = generateId();
 
 
-      $thisUser = saveUser();
+      $thisUser = saveUserSQL();
 
       setcookie( 'userLoged', $thisUser['email'], time() + 3600000 );
 
