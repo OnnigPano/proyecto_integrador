@@ -97,7 +97,7 @@
         <form class="text-right mt-4" method="get">
           <button class="btn btn-success mr-2" type="submit" name="edit-profile" value="true">EDITAR PERFIL</button>
         </form>
-
+        
         <form class="profile-form m-3" method="post" enctype="multipart/form-data">
 
           <fieldset <?= $disableForm ?>>

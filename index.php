@@ -8,6 +8,9 @@
 ?>
 
   <main>
+    <form class="text-center" action="jsonToBd.php" method="get">
+      <button class="btn btn-lg btn-warning" type="submit" name="import" value="true">IMPORTAR USUARIOS</button>
+    </form>
 
     <nav class="products-nav">
       <ul>

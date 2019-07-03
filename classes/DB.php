@@ -14,101 +14,17 @@
 
         public function __construct()
         {
-            $this->name = trim($_POST['nameRegister']);
-            $this->surname = trim($_POST['surnameRegister']);
-            $this->nickname = trim($_POST['nicknameRegister']);
-            $this->password = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
-            $this->email = trim($_POST['emailRegister']);
-            $this->country = $_POST['countryRegister'];
-            $this->avatar = $_FILES['avatarRegister'];
+            $this->name = isset($_POST['nameRegister']) ?  trim($_POST['nameRegister']) : null;
+            $this->surname = isset($_POST['surnameRegister']) ? trim($_POST['surnameRegister']) : null;
+            $this->nickname = isset($_POST['nicknameRegister']) ? trim($_POST['nicknameRegister']) : null;
+            $this->password = isset($_POST['passwordRegister']) ? trim($_POST['passwordRegister']) : null;
+            $this->email = isset($_POST['emailRegister']) ? trim($_POST['emailRegister']) : null;
+            $this->country = isset($_POST['countryRegister']) ? $_POST['countryRegister'] : null;
+            $this->avatar = isset($_FILES['avatarRegister']) ? $_FILES['avatarRegister'] : null;
+
         }
 
-        // METODOS JSON OOP ---------------------------------------------------------------------------------------
-
-       /* function generateId(){
-
-            $allUsers = self::getAllUsers();
-
-            if (count($allUsers) == 0) {
-                return 1;
-            }
-
-            $lastIdUser = array_pop($allUsers);
-            return $lastIdUser['id'] + 1;
-        } */
-
-       /* public function saveUser() {
-          
-            $userToSave = [
-                'id' => $this->id,
-                'name' => $this->name,
-                'surname' => $this->surname,
-                'nickname' => $this->nickname,
-                'password' => $this->password,
-                'email' => $this->email,
-                'country' => $this->country,
-                'avatar' => $this->avatarUrl
-            ];
-          
-            $allUsers = self::getAllUsers();
-            $allUsers[] = $userToSave;
-          
-            file_put_contents(JSON_USERS_PATH, json_encode($allUsers));
-          
-            return $userToSave;
-        }*/
-
-
-        /*static public function getAllUsers() {
-            $fileContent = file_get_contents(JSON_USERS_PATH);
-            $allUsers = json_decode($fileContent, true);
-            return $allUsers;
-        }*/
-
-        /*static public function checkUserExist($nickname) {
-            $allUsers = self::getAllUsers();
-
-            foreach ($allUsers as $user){
-                if ($user['nickname'] == $nickname){
-                    return true;
-                }
-            }
-            return false;
-        }*/
-
-       /* static public function checkEmailExist($email) {
-            $allUsers = self::getAllUsers();
-
-            foreach ($allUsers as $user) {
-              if ($user['email'] == $email) {
-                return true;
-              }
-            }
-            return false;
-        } */
-
-        /* static public function getUserByEmail($email) {
-            $allUsers = self::getAllUsers();
-
-            foreach ($allUsers as $oneUser) {
-              if ($oneUser["email"] == $email) {
-                return $oneUser;
-              }
-            }
-        } */
-
-        /* static public function getUserByUsername($userName) {
-            $allUsers = self::getAllUsers();
-
-            foreach ($allUsers as $user){
-                if ($user["nickname"] == $userName){
-                    return $user;
-                }
-            }
-        } */
-
-        //FIN METODOS JSON OOP ------------------------------------------------------------------------------------------
-
+        //Guarda el avatar del usuario y devuelve la ruta de la imagen
         public function saveImage() {
             $extension = pathinfo($_FILES['avatarRegister']['name'], PATHINFO_EXTENSION);
             $tempFile = $_FILES['avatarRegister']['tmp_name'];
@@ -118,7 +34,7 @@
           
             return $finalName;
         }
-
+        //Hashea el password
         public function passwordHash()
         {
             $this->password = password_hash( trim($_POST['passwordRegister']), PASSWORD_DEFAULT );
@@ -126,7 +42,7 @@
 
         //METODOS MySQL
 
-
+        //Inserta el usuario en la BD
         public function insertUser()
         {
             global $db;
@@ -158,26 +74,7 @@
             }
             
         }
-        /*static public function getAllUsers()
-        {
-            global $db;
-
-            try {
-                $sql = "SELECT * FROM users";
-
-                $query = $db->query($sql);
-                $query->execute();
-
-                $allUsersDB = $query->fetch(PDO::FETCH_ASSOC);
-
-                return $allUsersDB;
-
-            } catch (PDOException $e) {
-                die('Error buscando usuario por ID');
-            }
-            
-        }*/
-
+        //Trae al usuario de la BD por le id
         static public function getUserByID($id)
         {
             global $db;
@@ -199,7 +96,7 @@
             }
             
         }
-
+        //Valida si el email ya existe en la BD
         static public function checkEmailExist($email)
         {
             global $db;
@@ -225,7 +122,7 @@
             }
             
         }
-
+        //Trae al usuario por su email
         static public function getUserByEmail($email)
         {
 
@@ -256,7 +153,7 @@
             }
             
         }
-
+        //Valida si existe el nickname en la BD
         static public function checkUserExist($nickname)
         {
             global $db;
@@ -282,7 +179,7 @@
             }
             
         }
-
+        //Trae al usuario por su nickname
         static public function getUserByUsername($name)
         {
             global $db;
@@ -312,7 +209,7 @@
             }
             
         }
-
+        //Actualiz(edita) al usuario según su selección de datos
         public function updateUser($name, $surname, $nickname, $email, $country, $password, $avatar, $id)
         {       
             global $db;
@@ -337,7 +234,7 @@
                 die('Error editando usuario en la BD');
             }
         }
-
+        //Trae a todos los usuarios del archivo json
         static public function getUsersFromJson()
         {
             $fileContent = file_get_contents(JSON_USERS_PATH);
@@ -345,11 +242,12 @@
             return $allUsersJson;
 
         }
-
+        //Guarda a los usuarios del json siempre y cuando no se repita el email o nickname en la BD 
         static public function saveUsersFromJson($jsonUsers)
         {   
             global $db;
             foreach ($jsonUsers as $oneUser) {
+                if (!self::checkEmailExist($oneUser['email']) && !self::checkUserExist($oneUser['nickname'])) {
                     try {
 
                         $sql = "INSERT INTO users(name, surname, nickname, email, country, password, avatar, registration_date) 
@@ -357,13 +255,13 @@
                         
         
                         $stmt = $db->prepare($sql);
-                        $stmt->bindValue(':name', $oneUser['nameRegister']);
-                        $stmt->bindValue(':surname', $oneUser['surnameRegister']);
-                        $stmt->bindValue(':nickname', $oneUser['nicknameRegister']);
-                        $stmt->bindValue(':email', $oneUser['emailRegister']);
-                        $stmt->bindValue(':country', $oneUser['countryRegister']);
-                        $stmt->bindValue(':password', $oneUser['passwordRegister']);
-                        $stmt->bindValue(':avatar', $oneUser['avatarRegister']);
+                        $stmt->bindValue(':name', $oneUser['name']);
+                        $stmt->bindValue(':surname', $oneUser['surname']);
+                        $stmt->bindValue(':nickname', $oneUser['nickname']);
+                        $stmt->bindValue(':email', $oneUser['email']);
+                        $stmt->bindValue(':country', $oneUser['country']);
+                        $stmt->bindValue(':password', $oneUser['password']);
+                        $stmt->bindValue(':avatar', $oneUser['avatar']);
         
                         $stmt->execute();        
                         
@@ -371,6 +269,8 @@
                         var_dump($e->getMessage());
                         exit;
                     }
+                    
+                }
             }
         }
 
